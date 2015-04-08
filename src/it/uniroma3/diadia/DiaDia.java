@@ -1,8 +1,8 @@
 package it.uniroma3.diadia;
 
-import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.giocatore.Borsa;
+import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.FabbricaDiComandi;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiSemplice;
 
 import java.util.Scanner;
 
@@ -26,8 +26,6 @@ public class DiaDia {
 			+ "puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n"
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
-	private static String[] elencoComandi = { "vai", "posa", "prendi", "borsa", "aiuto",
-			"fine" };
 
 	public DiaDia() {
 		this.partita = new Partita();
@@ -52,116 +50,16 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false
 	 *         altrimenti
 	 */
-	private boolean processaIstruzione(String istruzione) {
-		Comando comandoDaEseguire = new Comando(istruzione);
-		if (comandoDaEseguire.getNome() == null) {
-			System.out.println("Comando sconosciuto");
-		} else {
-			switch (comandoDaEseguire.getNome()) {
-			case "fine":
-				this.fine();
-				return true;
-			case "vai":
-				this.vai(comandoDaEseguire.getParametro());
-				break;
-			case "aiuto":
-				this.aiuto();
-				break;
-			case "prendi":
-				this.prendi(comandoDaEseguire.getParametro());
-				break;
-			case "posa":
-				this.posa(comandoDaEseguire.getParametro());
-				break;
-			case "borsa":
-				System.out.println(this.borsa());
-				break;
-			default:
-				System.out.println("Comando sconosciuto");
-			}
-		}
-		if (this.partita.isVinta()) {
+	private boolean processaIstruzione(String istruzione) { // TODO Controllare
+		Comando comandoDaEseguire;
+		FabbricaDiComandi factory = new FabbricaDiComandiSemplice();
+		comandoDaEseguire = factory.costruisciComando(istruzione);
+		comandoDaEseguire.esegui(this.partita);
+		if (this.partita.isVinta())
 			System.out.println("Hai vinto!");
-			return true;
-		} else if (this.partita.isFinita()) {
-			this.fine();
-			return true;
-		} else
-			return false;
-
-	}
-
-	private String borsa() {
-		return this.partita.getGiocatore().getBorsa().toString();
-	}
-
-	// implementazioni dei comandi dell'utente:
-
-	/**
-	 * Stampa informazioni di aiuto.
-	 */
-	private void aiuto() {
-		for (int i = 0; i < elencoComandi.length; i++)
-			System.out.print(elencoComandi[i] + " ");
-		System.out.println();
-	}
-
-	/**
-	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra e ne stampa
-	 * il nome, altrimenti stampa un messaggio di errore
-	 */
-	private void vai(String direzione) {
-		if (direzione == null)
-			System.out.println("Dove vuoi andare?");
-		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(
-				direzione);
-		if (prossimaStanza == null)
-			System.out.println("Direzione inesistente");
-		else {
-			this.partita.setStanzaCorrente(prossimaStanza);
-			this.partita.getGiocatore().decrementaCfu();
-		}
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
-	}
-
-	/**
-	 * Comando "Fine".
-	 */
-	private void fine() {
-		System.out.println("Game Over!\nGrazie di aver giocato!"); // si desidera smettere
-	}
-
-	public void prendi(String nomeAttrezzo) {
-		Stanza stanzaCorrente = this.partita.getStanzaCorrente();
-		Borsa borsa = partita.getGiocatore().getBorsa();
-		if (stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
-			Attrezzo attrezzo = stanzaCorrente.getAttrezzo(nomeAttrezzo);
-			if (borsa.addAttrezzo(attrezzo)) {
-				stanzaCorrente.removeAttrezzo(attrezzo);
-				System.out.println("Hai preso " + attrezzo.toString());
-			} else {
-				System.out.println("La borsa è piena!");
-			}
-		} else {
-			System.out.println("Attrezzo non presente nella stanza");
-		}
-	}
-
-	public void posa(String nomeAttrezzo) {
-		Borsa borsa = partita.getGiocatore().getBorsa();
-		Stanza stanzaCorrente = this.partita.getStanzaCorrente();
-		if (borsa.hasAttrezzo(nomeAttrezzo)) {
-			Attrezzo attrezzo = borsa.getAttrezzo(nomeAttrezzo);
-			if (stanzaCorrente.addAttrezzo(attrezzo)) {
-				borsa.removeAttrezzo(nomeAttrezzo);
-				System.out.println("Hai posato " + attrezzo.toString());
-			} else {
-				System.out.println("La stanza è piena!");
-			}
-		} else {
-			System.out.println("Attrezzo non presente nella borsa");
-		}
+		if (this.partita.giocatoreIsVivo())
+			System.out.println("Hai esaurito i CFU...");
+		return this.partita.isFinita();
 	}
 
 	public static void main(String[] argc) {
