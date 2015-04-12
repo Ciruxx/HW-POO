@@ -3,8 +3,10 @@ package it.uniroma3.diadia.comandi;
 import java.util.Scanner;
 
 	public class FabbricaDiComandisemplice implements FabbricaDiComandi{  
-		 public Comando costruisciComando(String istruzione) {   
-			 Scanner scannerDiParole = new Scanner(istruzione);   
+		 private Scanner scannerDiParole;
+
+		public Comando costruisciComando(String istruzione) {   
+			 scannerDiParole = new Scanner(istruzione);   
 			 String nomeComando = null;   
 			 String parametro = null;   
 			 Comando comando = null;  

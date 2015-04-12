@@ -95,6 +95,7 @@ public class DiaDia {
 	Comando comandoDaEseguire;   
 	FabbricaDiComandisemplice factory = new FabbricaDiComandisemplice();  
 	 comandoDaEseguire = factory.costruisciComando(istruzione);  
+	 if(comandoDaEseguire!=null)
 	 comandoDaEseguire.esegui(this.partita);   
 	 if (this.partita.isVinta()) {
 			System.out.println("Hai vinto!");
