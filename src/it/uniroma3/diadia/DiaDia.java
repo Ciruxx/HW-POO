@@ -1,8 +1,10 @@
 package it.uniroma3.diadia;
 
-import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.giocatore.Borsa;
+//import it.uniroma3.diadia.ambienti.Stanza;
+//import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.FabbricaDiComandisemplice;
+//import it.uniroma3.diadia.giocatore.Borsa;
 
 import java.util.Scanner;
 
@@ -26,8 +28,8 @@ public class DiaDia {
 			+ "puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n"
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
-	private static String[] elencoComandi = { "vai", "posa", "prendi", "borsa", "aiuto",
-			"fine" };
+	//private static String[] elencoComandi = { "vai", "posa", "prendi", "borsa", "aiuto",
+		//	"fine" };
 
 	public DiaDia() {
 		this.partita = new Partita();
@@ -52,7 +54,7 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false
 	 *         altrimenti
 	 */
-	private boolean processaIstruzione(String istruzione) {
+	/*private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire = new Comando(istruzione);
 		if (comandoDaEseguire.getNome() == null) {
 			System.out.println("Comando sconosciuto");
@@ -88,29 +90,31 @@ public class DiaDia {
 			return true;
 		} else
 			return false;
+			*/
+	private boolean processaIstruzione(String istruzione) {  
+	Comando comandoDaEseguire;   
+	FabbricaDiComandisemplice factory = new FabbricaDiComandisemplice();  
+	 comandoDaEseguire = factory.costruisciComando(istruzione);  
+	 comandoDaEseguire.esegui(this.partita);   
+	 if (this.partita.isVinta()) {
+			System.out.println("Hai vinto!");
+			return true;
+		} else if (this.partita.isFinita()) {
+			this.fine();
+			return true;
+		} else
+			return false;
 
 	}
 
-	private String borsa() {
-		return this.partita.getGiocatore().getBorsa().toString();
-	}
 
 	// implementazioni dei comandi dell'utente:
-
-	/**
-	 * Stampa informazioni di aiuto.
-	 */
-	private void aiuto() {
-		for (int i = 0; i < elencoComandi.length; i++)
-			System.out.print(elencoComandi[i] + " ");
-		System.out.println();
-	}
 
 	/**
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra e ne stampa
 	 * il nome, altrimenti stampa un messaggio di errore
 	 */
-	private void vai(String direzione) {
+	/*private void vai(String direzione) {
 		if (direzione == null)
 			System.out.println("Dove vuoi andare?");
 		Stanza prossimaStanza = null;
@@ -123,13 +127,6 @@ public class DiaDia {
 			this.partita.getGiocatore().decrementaCfu();
 		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
-	}
-
-	/**
-	 * Comando "Fine".
-	 */
-	private void fine() {
-		System.out.println("Game Over!\nGrazie di aver giocato!"); // si desidera smettere
 	}
 
 	public void prendi(String nomeAttrezzo) {
@@ -163,7 +160,11 @@ public class DiaDia {
 			System.out.println("Attrezzo non presente nella borsa");
 		}
 	}
-
+*/
+	public void fine(){
+		System.out.println("Game Over!\nGrazie di aver giocato!");
+		}
+	
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();
 		gioco.gioca();
