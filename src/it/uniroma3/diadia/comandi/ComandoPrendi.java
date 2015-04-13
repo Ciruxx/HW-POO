@@ -5,7 +5,7 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
-public class ComandoPrendi implements Comando { // TODO Controllare
+public class ComandoPrendi implements Comando {
 
 	private String nomeAttrezzo;
 

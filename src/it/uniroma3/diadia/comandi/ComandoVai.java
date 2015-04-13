@@ -3,7 +3,7 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 
-public class ComandoVai implements Comando { // TODO Controllare
+public class ComandoVai implements Comando {
 	private String direzione;
 
 	@Override
@@ -20,7 +20,7 @@ public class ComandoVai implements Comando { // TODO Controllare
 			return;
 		}
 		partita.setStanzaCorrente(prossimaStanza);
-		System.out.println(partita.getStanzaCorrente().getNome());
+		System.out.println(partita.getStanzaCorrente().getDescrizione());
 		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu() - 1);
 	}
 

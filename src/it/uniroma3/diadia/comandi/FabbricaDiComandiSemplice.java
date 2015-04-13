@@ -2,7 +2,7 @@ package it.uniroma3.diadia.comandi;
 
 import java.util.Scanner;
 
-public class FabbricaDiComandiSemplice implements FabbricaDiComandi { // TODO Controllare
+public class FabbricaDiComandiSemplice implements FabbricaDiComandi {
 
 	@Override
 	public Comando costruisciComando(String istruzione) {
@@ -12,38 +12,44 @@ public class FabbricaDiComandiSemplice implements FabbricaDiComandi { // TODO Co
 		Comando comando = null;
 
 		if (scannerDiParole.hasNext())
-			nomeComando = scannerDiParole.next(); // prima parola: nome del comando
-		
+			nomeComando = scannerDiParole.next(); // prima parola: nome del
+													// comando
+
 		if (scannerDiParole.hasNext())
-			parametro = scannerDiParole.next(); // seconda parola: eventuale parametro
+			parametro = scannerDiParole.next(); // seconda parola: eventuale
+												// parametro
 		scannerDiParole.close();
-		
+
 		if (nomeComando == null)
 			comando = new ComandoNonValido();
 
-		else if (nomeComando.equals("vai"))
-			comando = new ComandoVai();
-
-		else if (nomeComando.equals("prendi"))
-			comando = new ComandoPrendi();
-
-		else if (nomeComando.equals("posa"))
-			comando = new ComandoPosa();
-
-		else if (nomeComando.equals("aiuto"))
-			comando = new ComandoAiuto();
-
-		else if (nomeComando.equals("fine"))
-			comando = new ComandoFine();
-
-		else if (nomeComando.equals("guarda"))
-			comando = new ComandoGuarda();
-		
-		else if (nomeComando.equals("borsa"))
-			comando = new ComandoBorsa();
-
 		else
-			comando = new ComandoNonValido();
+			switch (nomeComando) {
+			case "vai":
+				comando = new ComandoVai();
+				break;
+			case "prendi":
+				comando = new ComandoPrendi();
+				break;
+			case "posa":
+				comando = new ComandoPosa();
+				break;
+			case "aiuto":
+				comando = new ComandoAiuto();
+				break;
+			case "fine":
+				comando = new ComandoFine();
+				break;
+			case "guarda":
+				comando = new ComandoGuarda();
+				break;
+			case "borsa":
+				comando = new ComandoBorsa();
+				break;
+			default:
+				comando = new ComandoNonValido();
+				break;
+			}
 
 		comando.setParametro(parametro);
 		return comando;

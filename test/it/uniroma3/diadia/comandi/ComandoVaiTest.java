@@ -21,7 +21,7 @@ public class ComandoVaiTest {
 	}
 
 	@Test
-	public void testEsegui() { // TODO è buona cosa? Chiedere al prof.
+	public void testEsegui() {
 		String[] direzioni = new String[] {"nord", "sud", "est", "ovest"};
 		Random r = new Random();
 		for (int i=0; i<ITERAZIONI; i++) {

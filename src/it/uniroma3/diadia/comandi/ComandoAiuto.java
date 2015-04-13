@@ -2,7 +2,7 @@ package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.Partita;
 
-public class ComandoAiuto implements Comando { // TODO Controllare
+public class ComandoAiuto implements Comando {
 	
 	private static String[] elencoComandi = { "vai", "posa", "prendi", "borsa",
 		"aiuto", "fine", "guarda" }; // TODO è orribile: ridondanza del codice

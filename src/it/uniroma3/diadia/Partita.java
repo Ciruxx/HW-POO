@@ -68,7 +68,7 @@ public class Partita {
 		return labirinto;
 	}
 
-	public boolean giocatoreIsVivo() { // TODO Forse il metodo è di responsabilità del giocatore?
-		 return giocatore.getCfu() == 0;
+	public boolean giocatoreIsVivo() {
+		 return giocatore.isVivo();
 	}
 }
