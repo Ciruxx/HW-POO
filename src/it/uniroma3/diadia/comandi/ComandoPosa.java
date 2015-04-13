@@ -6,10 +6,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
 public class ComandoPosa implements Comando {
+
 	private String nomeAttrezzo;
-	public ComandoPosa(String nomeAttrezzo) {  
-		 this.nomeAttrezzo = nomeAttrezzo;     
-	 }
 
 	@Override
 	public void esegui(Partita partita) {
@@ -21,7 +19,7 @@ public class ComandoPosa implements Comando {
 				borsa.removeAttrezzo(nomeAttrezzo);
 				System.out.println("Hai posato " + attrezzo.toString());
 			} else {
-				System.out.println("La stanza è piena!");
+				System.out.println("La stanza Ã¨ piena!");
 			}
 		} else {
 			System.out.println("Attrezzo non presente nella borsa");
@@ -30,8 +28,7 @@ public class ComandoPosa implements Comando {
 
 	@Override
 	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-
+		nomeAttrezzo = parametro;
 	}
 
 }

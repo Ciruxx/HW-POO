@@ -7,13 +7,11 @@ public class ComandoFine implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		System.out.println("Game Over!\nGrazie di aver giocato!");
-
+		partita.setFinita();
 	}
 
 	@Override
 	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
