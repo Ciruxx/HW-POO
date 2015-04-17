@@ -17,7 +17,7 @@ public class Stanza {
 	private static final int NUMERO_MASSIMO_ATTREZZI = 10;
 	private String nome;
 	private Attrezzo[] attrezzi;
-	private int numeroAttrezzi;
+	protected int numeroAttrezzi;
 	private Stanza[] stanzeAdiacenti;
 	private int numeroStanzeAdiacenti;
 	private String[] direzioni;
