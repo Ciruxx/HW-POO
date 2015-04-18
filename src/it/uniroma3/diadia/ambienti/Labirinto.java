@@ -20,7 +20,7 @@ public class Labirinto {
 		Attrezzo osso = new Attrezzo("osso",1);
     	
 		/* crea stanze del labirinto */
-		Stanza atrio = new Stanza("Atrio");
+		StanzaBloccata atrio = new StanzaBloccata("Atrio","nord","osso");
 		Stanza aulaN11 = new Stanza("Aula N11");
 		Stanza aulaN10 = new Stanza("Aula N10");
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
