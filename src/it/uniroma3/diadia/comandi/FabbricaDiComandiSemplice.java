@@ -9,7 +9,7 @@ public class FabbricaDiComandiSemplice implements FabbricaDiComandi {
 		Scanner scannerDiParole = new Scanner(istruzione);
 		String nomeComando = null;
 		String parametro = null;
-		Comando comando = null;
+        Comando comando;
 
 		if (scannerDiParole.hasNext())
 			nomeComando = scannerDiParole.next(); // prima parola: nome del
@@ -42,9 +42,6 @@ public class FabbricaDiComandiSemplice implements FabbricaDiComandi {
 				break;
 			case "guarda":
 				comando = new ComandoGuarda();
-				break;
-			case "borsa":
-				comando = new ComandoBorsa();
 				break;
 			default:
 				comando = new ComandoNonValido();

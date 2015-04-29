@@ -7,7 +7,8 @@ public class ComandoGuarda implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
-	}
+        System.out.println(partita.getGiocatore().getBorsa().toString());
+    }
 
 	@Override
 	public void setParametro(String parametro) {
