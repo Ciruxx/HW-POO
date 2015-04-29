@@ -1,19 +1,16 @@
 package it.uniroma3.diadia.ambienti;
 
-import it.uniroma3.diadia.ambienti.StanzaBloccata;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.String;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
 
 /**
  * Created by Ciro on 19/04/2015.
  */
 public class StanzaBloccataTest {
-    public static final String NO_ATTREZZO= "Non hai AttrezzoCheSblocca, non puoi andare in questa direzione!"
+    public static final String NO_ATTREZZO = "Non hai AttrezzoCheSblocca, non puoi andare in questa direzione!";
     private StanzaBloccata stanza1;
     private Stanza stanza2;
     private Attrezzo attrezzo;
@@ -27,12 +24,12 @@ public class StanzaBloccataTest {
     }
 
     @Test
-    public void testGetStanzaAdiacente()_SenzaAttrezzo throws Exception {
+    public void testGetStanzaAdiacente_SenzaAttrezzo() {
       assertSame(NO_ATTREZZO, stanza1.getStanzaAdiacente("nord"));
     }
 
     @Test
-    public void testGetStanzaAdiacente()_ConAttrezzo throws Exception {
+    public void testGetStanzaAdiacente_ConAttrezzo() {
         stanza1.addAttrezzo(attrezzo);
         assertSame(stanza2.getNome(), stanza1.getStanzaAdiacente("nord").getNome());
     }

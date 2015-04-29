@@ -4,7 +4,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class StanzaBuiaTest {
 
@@ -19,6 +20,9 @@ public class StanzaBuiaTest {
     @Test
     public void testGetDescrizione_Buia() throws Exception {
         assertEquals(StanzaBuia.DESCRIZIONE_BUIO, stanzaBuia.getDescrizione());
+
+        Attrezzo ciao = new Attrezzo("ciao", 2);
+        testGetDescrizione_Luminosa();
     }
 
     @Test

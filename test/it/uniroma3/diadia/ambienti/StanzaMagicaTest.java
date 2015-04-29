@@ -1,9 +1,12 @@
 package it.uniroma3.diadia.ambienti;
 
-import it.uniroma3.diadia.ambienti.StanzaMagica;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+
 
 /**
  * Created by cy on 29/04/15.
@@ -20,10 +23,10 @@ public class StanzaMagicaTest {
     }
 
     @Test
-    public void testModificaAttrezzo() throws Exception{
+    public void testModificaAttrezzo() throws Exception {
         stanzamagica.removeAttrezzo(attrezzo);
         stanzamagica.addAttrezzo(attrezzo);
         assertTrue(stanzamagica.hasAttrezzo("dcba"));
-        assertSame(6,stanzamagica.getAttrezzo("dcba").getPeso());
+        assertSame(6, stanzamagica.getAttrezzo("dcba").getPeso());
     }
 }
