@@ -6,11 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertSame;
 
-/**
- * Created by Ciro on 19/04/2015.
- */
 public class StanzaBloccataTest {
-    public static final String NO_ATTREZZO = "Non hai AttrezzoCheSblocca, non puoi andare in questa direzione!";
     private StanzaBloccata stanza1;
     private Stanza stanza2;
     private Attrezzo attrezzo;
@@ -25,12 +21,12 @@ public class StanzaBloccataTest {
 
     @Test
     public void testGetStanzaAdiacente_SenzaAttrezzo() {
-      assertSame(NO_ATTREZZO, stanza1.getStanzaAdiacente("nord"));
+        assertSame(stanza1, stanza1.getStanzaAdiacente("nord"));
     }
 
     @Test
     public void testGetStanzaAdiacente_ConAttrezzo() {
         stanza1.addAttrezzo(attrezzo);
-        assertSame(stanza2.getNome(), stanza1.getStanzaAdiacente("nord").getNome());
+        assertSame(stanza2, stanza1.getStanzaAdiacente("nord"));
     }
 }

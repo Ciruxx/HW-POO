@@ -1,8 +1,5 @@
 package it.uniroma3.diadia.ambienti;
 
-/**
- * Created by Ciro on 18/04/2015.
- */
 public class StanzaBloccata extends Stanza {
     private String direzioneBloccata;
     private String attrezzo;
@@ -11,8 +8,8 @@ public class StanzaBloccata extends Stanza {
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
      *
      * @param nome              il nome della stanza
-     * @param direzioneBloccata
-     * @param attrezzo
+     * @param direzioneBloccata la direzione bloccata se non è presente l'attrezzo
+     * @param attrezzo          l'attrezzo che deve essere nella stanza per sbloccare la direzione
      */
     public StanzaBloccata(String nome, String direzioneBloccata, String attrezzo) {
         super(nome);

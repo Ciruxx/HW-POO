@@ -18,15 +18,12 @@ public class StanzaBuiaTest {
     }
 
     @Test
-    public void testGetDescrizione_Buia() throws Exception {
+    public void testGetDescrizione_Buia() {
         assertEquals(StanzaBuia.DESCRIZIONE_BUIO, stanzaBuia.getDescrizione());
-
-        Attrezzo ciao = new Attrezzo("ciao", 2);
-        testGetDescrizione_Luminosa();
     }
 
     @Test
-    public void testGetDescrizione_Luminosa() throws Exception {
+    public void testGetDescrizione_Luminosa() {
         stanzaBuia.addAttrezzo(new Attrezzo(NOME_ATTREZZO_LUMINOSO, 1));
         assertNotEquals(StanzaBuia.DESCRIZIONE_BUIO, stanzaBuia.getDescrizione());
     }

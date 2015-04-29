@@ -8,9 +8,6 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 
-/**
- * Created by cy on 29/04/15.
- */
 public class StanzaMagicaTest {
     private StanzaMagica stanzamagica;
     private Attrezzo attrezzo;
