@@ -13,7 +13,7 @@ public class StanzaBuiaTest {
     private StanzaBuia stanzaBuia;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         stanzaBuia = new StanzaBuia("stanza","est", NOME_ATTREZZO_LUMINOSO);
     }
 

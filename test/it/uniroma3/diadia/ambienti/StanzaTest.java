@@ -1,10 +1,10 @@
 package it.uniroma3.diadia.ambienti;
 
-import static org.junit.Assert.*;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class StanzaTest {
 
@@ -16,8 +16,8 @@ public class StanzaTest {
 
 
 	@Before
-	public void setUp() throws Exception {
-		stanza1 = new Stanza("Stanza 1");
+    public void setUp() {
+        stanza1 = new Stanza("Stanza 1");
 		stanza2 = new Stanza("Stanza 2");
 		stanzaVuota = new Stanza("Stanza vuota");
 

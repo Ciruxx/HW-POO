@@ -7,7 +7,8 @@ import it.uniroma3.diadia.giocatore.Borsa;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ComandoPosaTest {
 
@@ -17,7 +18,7 @@ public class ComandoPosaTest {
     private Stanza stanza;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         partita = new Partita();
         borsa = partita.getGiocatore().getBorsa();
         stanza = partita.getStanzaCorrente();
@@ -30,14 +31,14 @@ public class ComandoPosaTest {
     }
 
     @Test
-    public void testEsegui_NonEsistente() throws Exception {
+    public void testEsegui_NonEsistente() {
         eseguiPosa();
         assertFalse(stanza.hasAttrezzo(NOME_ATTREZZO));
         assertFalse(borsa.hasAttrezzo(NOME_ATTREZZO));
     }
 
     @Test
-    public void testEsegui_Esistente() throws Exception {
+    public void testEsegui_Esistente() {
         borsa.addAttrezzo(new Attrezzo(NOME_ATTREZZO, 1));
         eseguiPosa();
         assertTrue(stanza.hasAttrezzo(NOME_ATTREZZO));

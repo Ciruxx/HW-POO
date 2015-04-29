@@ -13,14 +13,14 @@ public class StanzaMagicaTest {
     private Attrezzo attrezzo;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         stanzamagica = new StanzaMagica("StanzaDiTest", 1);
         attrezzo = new Attrezzo("abcd", 3);
         stanzamagica.addAttrezzo(attrezzo);
     }
 
     @Test
-    public void testModificaAttrezzo() throws Exception {
+    public void testModificaAttrezzo() {
         stanzamagica.removeAttrezzo(attrezzo);
         stanzamagica.addAttrezzo(attrezzo);
         assertTrue(stanzamagica.hasAttrezzo("dcba"));

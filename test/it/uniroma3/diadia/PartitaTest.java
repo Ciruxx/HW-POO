@@ -1,10 +1,11 @@
 package it.uniroma3.diadia;
 
-import static org.junit.Assert.*;
 import it.uniroma3.diadia.ambienti.Stanza;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class PartitaTest {
 
@@ -14,8 +15,8 @@ public class PartitaTest {
 	Stanza stanzaVincente;
 
 	@Before
-	public void setUp() throws Exception {
-		partitaAppenaIniziata = new Partita();
+    public void setUp() {
+        partitaAppenaIniziata = new Partita();
 		partitaVinta = new Partita();
 		partitaZeroCfu = new Partita();
 

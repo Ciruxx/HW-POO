@@ -12,7 +12,7 @@ public class StanzaBloccataTest {
     private Attrezzo attrezzo;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         stanza1 = new StanzaBloccata("StanzaConDirezioneBloccata", "nord", "AttrezzoCheSblocca");
         stanza2 = new Stanza("StanzaBloccata");
         attrezzo = new Attrezzo("AttrezzoCheSblocca", 1);

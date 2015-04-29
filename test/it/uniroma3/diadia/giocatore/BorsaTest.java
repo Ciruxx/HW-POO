@@ -1,11 +1,10 @@
 package it.uniroma3.diadia.giocatore;
 
-import static org.junit.Assert.*;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.giocatore.Borsa;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class BorsaTest {
 	private Attrezzo attrezzoPeso1;
@@ -14,8 +13,8 @@ public class BorsaTest {
 	private Borsa borsaPeso2;
 
 	@Before
-	public void setUp() throws Exception {
-		attrezzoPeso1 = new Attrezzo("Chiodo", 1);
+    public void setUp() {
+        attrezzoPeso1 = new Attrezzo("Chiodo", 1);
 		attrezzoPeso3 = new Attrezzo("Forbici", 3);
 		borsaPeso5 = new Borsa(5);
 		borsaPeso2 = new Borsa(2);
@@ -51,8 +50,8 @@ public class BorsaTest {
 	}
 
 	@Test
-	public void testGetPeso_Vuota() throws Exception {
-		assertEquals(0, borsaPeso2.getPeso());
+    public void testGetPeso_Vuota() {
+        assertEquals(0, borsaPeso2.getPeso());
 	}
 
 	@Test
