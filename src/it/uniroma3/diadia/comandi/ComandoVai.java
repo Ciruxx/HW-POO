@@ -9,8 +9,8 @@ public class ComandoVai implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
-		Stanza prossimaStanza = null;
-		if (this.direzione == null) {
+        Stanza prossimaStanza;
+        if (this.direzione == null) {
 			System.out.println("Dove vuoi andare? Devi specificare una direzione");
 			return;
 		}
@@ -20,9 +20,10 @@ public class ComandoVai implements Comando {
 			return;
 		}
 		partita.setStanzaCorrente(prossimaStanza);
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
-		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu() - 1);
-	}
+        partita.getGiocatore().setCfu(partita.getGiocatore().getCfu() - 1);
+        System.out.println(partita.getStanzaCorrente().getDescrizione());
+        System.out.println("CFU rimanenti: " + partita.getGiocatore().getCfu());
+    }
 
 	@Override
 	public void setParametro(String parametro) {
