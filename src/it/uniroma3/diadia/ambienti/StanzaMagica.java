@@ -13,7 +13,7 @@ public class StanzaMagica extends Stanza {
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
      *
      * @param nome il nome della stanza
-     * @param sogliaMagica
+     * @param sogliaMagica diventerà magica dopo questa soglia...
      */
     public StanzaMagica(String nome, int sogliaMagica) {
         super(nome);
