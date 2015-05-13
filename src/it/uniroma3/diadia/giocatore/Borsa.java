@@ -29,6 +29,7 @@ public class Borsa {
 		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax())
 			return false;
 		this.attrezzi.put(attrezzo.getNome(), attrezzo);
+		this.numeroAttrezzi++;
 		//this.attrezzi.size(); <-- Forse si può usare al posto di numeroAttrezzi?
 		//this.attrezzi[this.numeroAttrezzi] = attrezzo;
 		return true;
@@ -79,13 +80,15 @@ public class Borsa {
 //		}
 		//for (Attrezzo a : this.attrezzi) {
 		//if (a.getNome().equals((nomeAttrezzo))) {
-		//	attrezzo = a;
+		Attrezzo attrezzo = this.attrezzi.remove(nomeAttrezzo);
 		//}
 		//}
 		//this.attrezzi.remove(attrezzo);
 //		attrezzi[k] = attrezzi[this.numeroAttrezzi-1];
-		//this.numeroAttrezzi--;
-		return this.attrezzi.remove(nomeAttrezzo);
+		if (attrezzo != null)
+			this.numeroAttrezzi--;
+		return attrezzo;
+
 	}
 
 	public String toString() {
