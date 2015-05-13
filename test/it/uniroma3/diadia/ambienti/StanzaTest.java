@@ -30,6 +30,17 @@ public class StanzaTest {
 		stanza2.addAttrezzo(attrezzo2);
 		stanza2.removeAttrezzo(attrezzo1);
 	}
+
+	@Test
+	public void testGetDirezioni() {
+		Stanza stanza = this.stanza1;
+		Stanza stanza2 = this.stanza2;
+		String[] direzioni = stanza.getDirezioni();
+		assertNull(direzioni);
+		stanza1.impostaStanzaAdiacente("Nord", stanza2);
+		direzioni = stanza.getDirezioni();
+		assertSame(direzioni[0], "Nord");
+	}
 	
 	@Test
 	public void testAddAttrezzo() {
@@ -60,6 +71,7 @@ public class StanzaTest {
 		testGetStanzaAdiacente_Generico("ovest");
 	}
 
+	@Test
 	private void testGetStanzaAdiacente_Generico(String direzione) {
 		stanza1.impostaStanzaAdiacente(direzione, stanza2);
 		assertSame(stanza2, stanza1.getStanzaAdiacente(direzione));
