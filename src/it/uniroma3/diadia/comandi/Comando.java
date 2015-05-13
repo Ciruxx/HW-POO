@@ -7,8 +7,8 @@ public interface Comando {
 	/**
 	 * esecuzione del comando
 	 */
-	public void esegui(Partita partita);
+	void esegui(Partita partita);
 
-	public void setParametro(String parametro);
+	void setParametro(String parametro);
 
 }
