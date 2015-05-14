@@ -5,8 +5,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaMagicaProtected extends Stanza {
 
-    private int sogliaMagica;
     private final static int SOGLIA_MAGICA_DEFAULT = 2;
+    private int sogliaMagica;
 
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -42,6 +42,6 @@ public class StanzaMagicaProtected extends Stanza {
     }
 
     private boolean isMagica() {
-        return numeroAttrezzi >= sogliaMagica;
+        return super.attrezzi.size() >= sogliaMagica;
     }
 }

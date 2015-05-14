@@ -4,6 +4,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Set;
+
 import static org.junit.Assert.*;
 
 public class StanzaTest {
@@ -35,12 +37,12 @@ public class StanzaTest {
 	public void testGetDirezioni() {
 		Stanza stanza = this.stanza1;
 		Stanza stanza2 = this.stanza2;
-		String[] direzioni = stanza.getDirezioni();
-		assertEquals(0, direzioni.length);
-		stanza1.impostaStanzaAdiacente("Nord", stanza2);
+        Set<String> direzioni = stanza.getDirezioni();
+        assertEquals(0, direzioni.size());
+        stanza1.impostaStanzaAdiacente("Nord", stanza2);
 		direzioni = stanza.getDirezioni();
-        assertSame("Nord", direzioni[0]);
-	}
+        assertEquals("Nord", direzioni.contains("Nord"));
+    }
 	
 	@Test
 	public void testAddAttrezzo() {
