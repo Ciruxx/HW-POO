@@ -41,7 +41,7 @@ public class StanzaTest {
         assertEquals(0, direzioni.size());
         stanza1.impostaStanzaAdiacente("Nord", stanza2);
 		direzioni = stanza.getDirezioni();
-        assertEquals("Nord", direzioni.contains("Nord"));
+        assertEquals(true, direzioni.contains("Nord"));
     }
 	
 	@Test
