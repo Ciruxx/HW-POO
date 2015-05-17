@@ -47,13 +47,11 @@ public class StanzaTest {
 	@Test
 	public void testAddAttrezzo() {
 		Stanza stanza = new Stanza("Stanza 3");
-		for (int i = 0; i<10; i++) {
-			assertTrue(stanza.addAttrezzo(attrezzo1));
-		}
-		assertFalse(stanza.addAttrezzo(attrezzo1));
-	}
-	
-	@Test
+        assertTrue(stanza.addAttrezzo(attrezzo1));
+        assertTrue(stanza.hasAttrezzo(attrezzo1.getNome()));
+    }
+
+    @Test
 	public void testGetStanzaAdiacente_Sud() {
 		testGetStanzaAdiacente_Generico("sud");
 	}

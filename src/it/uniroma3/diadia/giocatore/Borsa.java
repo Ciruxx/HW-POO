@@ -2,8 +2,7 @@ package it.uniroma3.diadia.giocatore;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Borsa {
     public final static int DEFAULT_PESO_MAX_BORSA = 10;
@@ -63,4 +62,37 @@ public class Borsa {
         } else s.append("Borsa vuota");
         return s.toString();
     }
+
+    public List<Attrezzo> getContenutoOrdinatoPerPeso() {
+        List<Attrezzo> listaAttrezzi = new LinkedList<>(this.attrezzi.values());
+        Collections.sort(listaAttrezzi, new Comparator<Attrezzo>() {
+            @Override
+            public int compare(Attrezzo o1, Attrezzo o2) {
+                return o1.getPeso() - o2.getPeso();
+            }
+        });
+        return listaAttrezzi;
+    }
+
+    public List<Attrezzo> getContenutoOrdinatoPerNome() {
+        List<Attrezzo> listaAttrezzi = new LinkedList<>(this.attrezzi.values());
+        Collections.sort(listaAttrezzi, new Comparator<Attrezzo>() {
+            @Override
+            public int compare(Attrezzo o1, Attrezzo o2) {
+                return o1.getNome().compareTo(o2.getNome());
+            }
+        });
+        return listaAttrezzi;
+    }
+
+    public Map<Integer, Set<Attrezzo>> getContenutoRaggruppatoPerPeso() {
+        Map<Integer, Set<Attrezzo>> map = new HashMap<>();
+        for (Attrezzo attrezzo : attrezzi.values()) {
+            int peso = attrezzo.getPeso();
+            if (!map.containsKey(peso)) map.put(peso, new HashSet<Attrezzo>());
+            map.get(peso).add(attrezzo);
+        }
+        return map;
+    }
+
 }

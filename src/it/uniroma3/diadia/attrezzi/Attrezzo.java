@@ -55,4 +55,23 @@ public class Attrezzo {
 		return this.getNome() + " (" + this.getPeso() + "kg)";
 	}
 
+    @Override
+    public boolean equals(Object o) { // TODO Autogenerato, controllare
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Attrezzo attrezzo = (Attrezzo) o;
+
+        if (peso != attrezzo.peso) return false;
+        if (nome != null ? !nome.equals(attrezzo.nome) : attrezzo.nome != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() { // Autogenerato, sembra buono
+        int result = nome != null ? nome.hashCode() : 0;
+        result = 31 * result + peso;
+        return result;
+    }
 }
