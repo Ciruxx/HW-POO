@@ -162,4 +162,8 @@ public class Stanza {
     public void setPersonaggi(AbstractPersonaggio personaggio) {
         this.personaggio = personaggio;
     }
+
+    public Stanza comparatoreStanze() {
+        return null;
+    }
 }
