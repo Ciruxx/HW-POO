@@ -4,28 +4,19 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.Personaggi.AbstractPersonaggio;
 
 public class ComandoInteragisci implements Comando {
-    private static final String MESSAGGIO_CON_CHI = "Con chi dovrei interagire?";
-    private String messaggio;
-    private String NomePersonaggio;
+    private static final String MESSAGGIO_NO_PERSONAGGIO = "Non ci sono personaggi in questa stanza";
 
     @Override
     public void esegui(Partita partita) {
-        AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggi();
-        if (personaggio != null && personaggio.getNome().equals(NomePersonaggio)) {
-            this.messaggio = personaggio.agisci(partita);
-            System.out.println(this.messaggio);
+        AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggio();
+        if (personaggio != null) {
+            System.out.println(personaggio.agisci(partita));
         } else
-            System.out.println(MESSAGGIO_CON_CHI);
-    }
-
-    public String getMessaggio() {
-        return this.messaggio;
+            System.out.println(MESSAGGIO_NO_PERSONAGGIO);
     }
 
     @Override
     public void setParametro(String parametro) {
-        NomePersonaggio = parametro;
+
     }
-
-
 }

@@ -3,9 +3,7 @@ package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.Personaggi.AbstractPersonaggio;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Classe Stanza - una stanza in un gioco di ruolo. Una stanza e' un luogo
@@ -109,11 +107,11 @@ public class Stanza {
         s += "\nAttrezzi nella stanza: ";
         for (Attrezzo a : this.attrezzi.values())
             s += a.toString() + " ";
-        s += "\nPersonaggi nella stanza: ";
-        if (personaggio == null)
-            s += "Non c'è nessuno qui!" + " ";
-        else
-            s += personaggio.toString() + " ";
+//        s += "\nPersonaggi nella stanza: ";
+//        if (personaggio == null)
+//            s += "Non c'è nessuno qui!" + " ";
+//        else
+//            s += personaggio.toString() + " ";
         return s;
     }
 
@@ -155,15 +153,27 @@ public class Stanza {
         return this.stanzeAdiacenti.keySet();
     }
 
-    public AbstractPersonaggio getPersonaggi() {
+    public AbstractPersonaggio getPersonaggio() {
         return this.personaggio;
     }
 
-    public void setPersonaggi(AbstractPersonaggio personaggio) {
+    public void setPersonaggio(AbstractPersonaggio personaggio) {
         this.personaggio = personaggio;
     }
 
-    public Stanza comparatoreStanze() {
-        return null;
+    public Stanza getStanzaConPiùAttrezzi() {
+        return Collections.max(stanzeAdiacenti.values(), new ComparatoreDiStanzePerNumeroAttrezzi());
+    }
+
+    public Stanza getStanzaConMenoAttrezzi() {
+        return Collections.min(stanzeAdiacenti.values(), new ComparatoreDiStanzePerNumeroAttrezzi());
+    }
+
+
+    private class ComparatoreDiStanzePerNumeroAttrezzi implements Comparator<Stanza> {
+        @Override
+        public int compare(Stanza o1, Stanza o2) {
+            return o1.getAttrezzi().size() - o2.getAttrezzi().size();
+        }
     }
 }

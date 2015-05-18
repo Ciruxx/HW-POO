@@ -57,9 +57,9 @@ public class Labirinto {
 		laboratorio.addAttrezzo(chiave);
 
 //        Inserisce i personaggi nelle stanze
-        aulaN11.setPersonaggi(magò);
-        laboratorio.setPersonaggi(cane);
-        atrio.setPersonaggi(merlino);
+        aulaN11.setPersonaggio(magò);
+        laboratorio.setPersonaggio(cane);
+        atrio.setPersonaggio(merlino);
 
 		// il gioco comincia nell'atrio
         stanzaIniziale = atrio;  
