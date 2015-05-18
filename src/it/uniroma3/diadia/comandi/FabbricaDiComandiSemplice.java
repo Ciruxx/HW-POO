@@ -43,6 +43,9 @@ public class FabbricaDiComandiSemplice implements FabbricaDiComandi {
 			case "guarda":
 				comando = new ComandoGuarda();
 				break;
+                case "interagisci":
+                    comando = new ComandoInteragisci();
+                    break;
 			default:
 				comando = new ComandoNonValido();
 				break;

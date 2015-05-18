@@ -109,6 +109,8 @@ public class Stanza {
         s += "\nAttrezzi nella stanza: ";
         for (Attrezzo a : this.attrezzi.values())
             s += a.toString() + " ";
+        s += "\nPersonaggi nella stanza: ";
+        s += personaggio.toString() + " ";
         return s;
     }
 

@@ -5,7 +5,7 @@ import it.uniroma3.diadia.Partita;
 public class ComandoAiuto implements Comando {
 
     private static String[] elencoComandi = {"vai", "posa", "prendi",
-            "aiuto", "fine", "guarda"}; // TODO è orribile: ridondanza del codice
+            "aiuto", "fine", "guarda", "interagisci"}; // TODO è orribile: ridondanza del codice
 
 	@Override
 	public void esegui(Partita partita) {
