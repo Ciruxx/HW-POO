@@ -11,8 +11,9 @@ public class ComandoInteragisci implements Comando {
     @Override
     public void esegui(Partita partita) {
         AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggi();
-        if (personaggio != null) {
+        if (personaggio != null && personaggio.getNome().equals(NomePersonaggio)) {
             this.messaggio = personaggio.agisci(partita);
+            System.out.println(this.messaggio);
         } else
             System.out.println(MESSAGGIO_CON_CHI);
     }
