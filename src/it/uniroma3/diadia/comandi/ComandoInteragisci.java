@@ -6,11 +6,11 @@ import it.uniroma3.diadia.Personaggi.AbstractPersonaggio;
 public class ComandoInteragisci implements Comando {
     private static final String MESSAGGIO_CON_CHI = "Con chi dovrei interagire?";
     private String messaggio;
+    private String NomePersonaggio;
 
     @Override
     public void esegui(Partita partita) {
-        AbstractPersonaggio personaggio;
-        personaggio = partita.getStanzaCorrente().getPersonaggi();
+        AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggi();
         if (personaggio != null) {
             this.messaggio = personaggio.agisci(partita);
         } else
@@ -23,7 +23,7 @@ public class ComandoInteragisci implements Comando {
 
     @Override
     public void setParametro(String parametro) {
-
+        NomePersonaggio = parametro;
     }
 
 

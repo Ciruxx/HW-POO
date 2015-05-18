@@ -110,7 +110,10 @@ public class Stanza {
         for (Attrezzo a : this.attrezzi.values())
             s += a.toString() + " ";
         s += "\nPersonaggi nella stanza: ";
-        s += personaggio.toString() + " ";
+        if (personaggio == null)
+            s += "Non c'è nessuno qui!" + " ";
+        else
+            s += personaggio.toString() + " ";
         return s;
     }
 
