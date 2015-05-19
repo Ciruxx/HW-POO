@@ -99,7 +99,7 @@ public class Stanza {
     public String toString() {
         String s = "";
         s += this.nome;
-        s += "\nUscite: ";
+        s += "\nUscite:";
         Set<String> direzioni = this.getDirezioni();
         for (String direzione : direzioni) {
             s += " " + direzione;
@@ -107,7 +107,7 @@ public class Stanza {
         s += "\nAttrezzi nella stanza: ";
         for (Attrezzo a : this.attrezzi.values())
             s += a.toString() + " ";
-//        s += "\nPersonaggi nella stanza: ";
+//        s += "\nPersonaggio nella stanza: ";
 //        if (personaggio == null)
 //            s += "Non c'è nessuno qui!" + " ";
 //        else

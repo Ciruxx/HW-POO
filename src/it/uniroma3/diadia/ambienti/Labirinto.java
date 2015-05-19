@@ -23,7 +23,7 @@ public class Labirinto {
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
 		Attrezzo chiave = new Attrezzo("chiave",2);
-        Attrezzo bacchetta = new Attrezzo("Bacchetta", 4);
+        Attrezzo bacchetta = new Attrezzo("bacchetta", 4);
 
 //        Crea i personaggi
         Strega magò = new Strega("Magò", "Sono la cattiva e terribile MAGA MAGO'!");
