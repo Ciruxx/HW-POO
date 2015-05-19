@@ -37,3 +37,5 @@ local.properties
 
 *.iml
 .idea
+*.eml
+*userlibraries
