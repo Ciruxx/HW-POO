@@ -41,6 +41,6 @@ public class CaricatoreLabirintoTest {
                 "Uscite: biblioteca nord N10, biblioteca sud N10");
         CaricatoreLabirinto monolocale = new CaricatoreLabirinto(stringReader);
         monolocale.carica();
-        assertEquals("biblioteca", monolocale.getStanzaIniziale().getNome());
+        assertEquals("N10", monolocale.getStanzaIniziale().getNome());
     }
 }

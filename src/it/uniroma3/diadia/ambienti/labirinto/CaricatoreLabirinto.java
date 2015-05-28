@@ -144,20 +144,25 @@ public class CaricatoreLabirinto {
     }
 
     private void leggiEImpostaUscite() throws FormatoFileNonValidoException {
-        String specificheUscite = this.leggiRigaCheCominciaPer(USCITE_MARKER);
-        try (Scanner scannerDiLinea = new Scanner(specificheUscite)) {
+        String stringaUscite = this.leggiRigaCheCominciaPer(USCITE_MARKER);
 
-            while (scannerDiLinea.hasNext()) {
-                check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("le uscite di una stanza."));
-                String stanzaPartenza = scannerDiLinea.next();
-                check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("la direzione di una uscita della stanza " + stanzaPartenza));
-                String dir = scannerDiLinea.next();
-                check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("la destinazione di una uscita della stanza " + stanzaPartenza + " nella direzione " + dir));
-                String stanzaDestinazione = scannerDiLinea.next();
+        List<String> list = separaStringheAlleVirgole(stringaUscite);
+        for (String specificheUscite : list) {
+            try (Scanner scannerDiLinea = new Scanner(specificheUscite)) {
+                while (scannerDiLinea.hasNext()) {
+                    check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("le uscite di una stanza."));
+                    String stanzaPartenza = scannerDiLinea.next();
+                    check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("la direzione di una uscita della stanza " + stanzaPartenza));
+                    String dir = scannerDiLinea.next();
+                    check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("la destinazione di una uscita della stanza " + stanzaPartenza + " nella direzione " + dir));
+                    String stanzaDestinazione = scannerDiLinea.next();
 
-                impostaUscita(stanzaPartenza, dir, stanzaDestinazione);
+                    impostaUscita(stanzaPartenza, dir, stanzaDestinazione);
+                }
             }
         }
+
+
     }
 
     private String msgTerminazionePrecoce(String msg) {
