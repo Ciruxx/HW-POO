@@ -1,8 +1,8 @@
 package it.uniroma3.diadia.giocatore;
-import static org.junit.Assert.*;
-import it.uniroma3.diadia.giocatore.Giocatore;
 
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class GiocatoreTest {
@@ -11,7 +11,7 @@ public class GiocatoreTest {
 	public void testDecrementaCfu() {
 		Giocatore giocatore = new Giocatore();
 		giocatore.decrementaCfu();
-		assertEquals(19, giocatore.getCfu());
+		assertEquals(9, giocatore.getCfu());
 	}
 
 }
