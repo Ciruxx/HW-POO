@@ -9,13 +9,24 @@ import it.uniroma3.diadia.personaggi.Cane;
 import it.uniroma3.diadia.personaggi.Mago;
 import it.uniroma3.diadia.personaggi.Strega;
 
+import java.io.FileNotFoundException;
+
 
 public class Labirinto {
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
 
 	public Labirinto() {
-		creaStanze();
+		try {
+			CaricatoreLabirinto caricatore = new CaricatoreLabirinto("Livello1");
+			caricatore.carica();
+			stanzaIniziale = caricatore.getStanzaIniziale();
+			stanzaVincente = caricatore.getStanzaVincente();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (FormatoFileNonValidoException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -40,7 +51,7 @@ public class Labirinto {
 		StanzaMagica aulaN10 = new StanzaMagica("Aula N10");
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
 		Stanza biblioteca = new Stanza("Biblioteca");
-		
+
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", biblioteca);
 		atrio.impostaStanzaAdiacente("est", aulaN11);

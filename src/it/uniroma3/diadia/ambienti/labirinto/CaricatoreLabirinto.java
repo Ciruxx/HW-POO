@@ -3,10 +3,7 @@ package it.uniroma3.diadia.ambienti.labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.*;
 import java.util.*;
 
 public class CaricatoreLabirinto {
@@ -46,7 +43,7 @@ public class CaricatoreLabirinto {
 
     public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
         this.nome2stanza = new HashMap<>();
-        this.reader = new LineNumberReader(new FileReader(nomeFile));
+        this.reader = new LineNumberReader(new FileReader("livelli" + File.separator + nomeFile));
     }
 
     public void carica() throws FormatoFileNonValidoException {
