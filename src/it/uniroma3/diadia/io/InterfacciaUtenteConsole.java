@@ -1,4 +1,4 @@
-package it.uniroma3.diadia.InterfacciaUtente;
+package it.uniroma3.diadia.io;
 
 import java.util.Scanner;
 

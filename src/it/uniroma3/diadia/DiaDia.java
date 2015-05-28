@@ -1,10 +1,10 @@
 package it.uniroma3.diadia;
 
-import it.uniroma3.diadia.InterfacciaUtente.InterfacciaUtente;
-import it.uniroma3.diadia.InterfacciaUtente.InterfacciaUtenteConsole;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
+import it.uniroma3.diadia.io.InterfacciaUtente;
+import it.uniroma3.diadia.io.InterfacciaUtenteConsole;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.

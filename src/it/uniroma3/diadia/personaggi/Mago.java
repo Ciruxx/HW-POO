@@ -1,4 +1,4 @@
-package it.uniroma3.diadia.Personaggi;
+package it.uniroma3.diadia.personaggi;
 
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -32,6 +32,6 @@ public class Mago extends AbstractPersonaggio {
     public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
         Attrezzo attrezzoDimezzato = new Attrezzo(attrezzo.getNome(), attrezzo.getPeso() / 2);
         partita.getStanzaCorrente().addAttrezzo(attrezzoDimezzato);
-        return "La tua bontà verrà premiata!";
+        return "La tua bontï¿½ verrï¿½ premiata!";
     }
 }

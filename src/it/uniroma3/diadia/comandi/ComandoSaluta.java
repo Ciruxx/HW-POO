@@ -1,7 +1,7 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.Personaggi.AbstractPersonaggio;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 
 /**
  * Created by Ciro on 26/05/2015.

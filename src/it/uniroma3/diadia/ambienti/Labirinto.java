@@ -1,9 +1,9 @@
 package it.uniroma3.diadia.ambienti;
 
-import it.uniroma3.diadia.Personaggi.Cane;
-import it.uniroma3.diadia.Personaggi.Mago;
-import it.uniroma3.diadia.Personaggi.Strega;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.Cane;
+import it.uniroma3.diadia.personaggi.Mago;
+import it.uniroma3.diadia.personaggi.Strega;
 
 
 public class Labirinto {
