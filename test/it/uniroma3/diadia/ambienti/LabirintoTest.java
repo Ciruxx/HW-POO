@@ -1,5 +1,6 @@
 package it.uniroma3.diadia.ambienti;
 
+import it.uniroma3.diadia.ambienti.labirinto.Labirinto;
 import org.junit.Before;
 import org.junit.Test;
 

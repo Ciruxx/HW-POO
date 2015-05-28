@@ -1,5 +1,9 @@
-package it.uniroma3.diadia.ambienti;
+package it.uniroma3.diadia.ambienti.labirinto;
 
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.ambienti.StanzaBloccata;
+import it.uniroma3.diadia.ambienti.StanzaBuia;
+import it.uniroma3.diadia.ambienti.StanzaMagica;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.Cane;
 import it.uniroma3.diadia.personaggi.Mago;
