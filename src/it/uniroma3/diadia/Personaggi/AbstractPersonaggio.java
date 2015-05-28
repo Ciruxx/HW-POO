@@ -34,10 +34,7 @@ public abstract class AbstractPersonaggio {
         return risposta.toString();
     }
 
-    public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
-        //TODO da implemeentare
-        return null;
-    }
+    public abstract String riceviRegalo(Attrezzo attrezzo, Partita partita);
 
     abstract public String agisci(Partita partita);
 
