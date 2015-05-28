@@ -17,9 +17,9 @@ public class Labirinto {
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
 
-	public Labirinto(int i) {
+	public Labirinto(int indicatoreDiLivello) {
 		try {
-			CaricatoreLabirinto caricatore = new CaricatoreLabirinto(i);
+			CaricatoreLabirinto caricatore = new CaricatoreLabirinto(indicatoreDiLivello);
 			caricatore.carica();
 			stanzaIniziale = caricatore.getStanzaIniziale();
 			stanzaVincente = caricatore.getStanzaVincente();
