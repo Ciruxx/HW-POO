@@ -9,18 +9,20 @@ public class ComandoPrendi extends AbstractComando {
 
 	@Override
     public String esegui(Partita partita) {
+        String s;
         Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Borsa borsa = partita.getGiocatore().getBorsa();
 		if (stanzaCorrente.hasAttrezzo(super.datoParametro)) {
 			Attrezzo attrezzo = stanzaCorrente.getAttrezzo(super.datoParametro);
 			if (borsa.addAttrezzo(attrezzo)) {
 				stanzaCorrente.removeAttrezzo(attrezzo);
-				System.out.println("Hai preso " + attrezzo.toString());
-			} else {
-				System.out.println("La borsa è piena!");
-			}
+                s = "Hai preso " + attrezzo.toString();
+            } else {
+                s = "La borsa è piena!";
+            }
 		} else {
-			System.out.println("Attrezzo non presente nella stanza");
-		}
-	}
+            s = "Attrezzo non presente nella stanza";
+        }
+        return s;
+    }
 }

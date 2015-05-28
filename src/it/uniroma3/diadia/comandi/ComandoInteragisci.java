@@ -10,9 +10,9 @@ public class ComandoInteragisci extends AbstractComando {
     public String esegui(Partita partita) {
         AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggio();
         if (personaggio != null) {
-            System.out.println(personaggio.agisci(partita));
+            return personaggio.agisci(partita);
         } else
-            System.out.println(MESSAGGIO_NO_PERSONAGGIO);
+            return MESSAGGIO_NO_PERSONAGGIO;
     }
 
 }
