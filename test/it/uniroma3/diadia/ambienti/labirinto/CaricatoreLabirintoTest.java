@@ -20,11 +20,6 @@ public class CaricatoreLabirintoTest {
     }
 
     @Test
-    public void testGetStanzaIniziale() throws Exception {
-
-    }
-
-    @Test
     public void testCarica_Monolocale() throws Exception {
         StringReader stringReader = new StringReader(
                 "Stanze: biblioteca\n" +
@@ -38,7 +33,14 @@ public class CaricatoreLabirintoTest {
     }
 
     @Test
-    public void testGetStanzaVincente() throws Exception {
-
+    public void testCarica_Bilocale() throws Exception {
+        StringReader stringReader = new StringReader("Stanze: biblioteca, N10\n" +
+                "Inizio: N10\n" +
+                "Vincente: biblioteca\n" +
+                "Attrezzi: martello 10 biblioteca, pinza 2 N10\n" +
+                "Uscite: biblioteca nord N10, biblioteca sud N10");
+        CaricatoreLabirinto monolocale = new CaricatoreLabirinto(stringReader);
+        monolocale.carica();
+        assertEquals("biblioteca", monolocale.getStanzaIniziale().getNome());
     }
 }
