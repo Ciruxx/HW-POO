@@ -3,7 +3,7 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.Personaggi.AbstractPersonaggio;
 
-public class ComandoInteragisci implements Comando {
+public class ComandoInteragisci extends AbstractComando {
     private static final String MESSAGGIO_NO_PERSONAGGIO = "Non ci sono personaggi in questa stanza";
 
     @Override
@@ -15,8 +15,4 @@ public class ComandoInteragisci implements Comando {
             System.out.println(MESSAGGIO_NO_PERSONAGGIO);
     }
 
-    @Override
-    public void setParametro(String parametro) {
-
-    }
 }

@@ -5,18 +5,17 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
-public class ComandoPosa implements Comando {
+public class ComandoPosa extends AbstractComando {
 
-	private String nomeAttrezzo;
 
 	@Override
 	public void esegui(Partita partita) {
 		Borsa borsa = partita.getGiocatore().getBorsa();
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
-		if (borsa.hasAttrezzo(nomeAttrezzo)) {
-			Attrezzo attrezzo = borsa.getAttrezzo(nomeAttrezzo);
+		if (borsa.hasAttrezzo(super.datoParametro)) {
+			Attrezzo attrezzo = borsa.getAttrezzo(super.datoParametro);
 			if (stanzaCorrente.addAttrezzo(attrezzo)) {
-				borsa.removeAttrezzo(nomeAttrezzo);
+				borsa.removeAttrezzo(super.datoParametro);
 				System.out.println("Hai posato " + attrezzo.toString());
 			} else {
 				System.out.println("La stanza è piena!");
@@ -25,10 +24,4 @@ public class ComandoPosa implements Comando {
 			System.out.println("Attrezzo non presente nella borsa");
 		}
 	}
-
-	@Override
-	public void setParametro(String parametro) {
-		nomeAttrezzo = parametro;
-	}
-
 }

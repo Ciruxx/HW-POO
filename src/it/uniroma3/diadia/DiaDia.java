@@ -2,9 +2,11 @@ package it.uniroma3.diadia;
 
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
-import it.uniroma3.diadia.comandi.FabbricaDiComandiSemplice;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 
 import java.util.Scanner;
+
+//aiutoimport it.uniroma3.diadia.comandi.FabbricaDiComandiSemplice;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -17,7 +19,6 @@ import java.util.Scanner;
  */
 
 public class DiaDia {
-	private Partita partita;
 	private static final String MESSAGGIO_BENVENUTO = "Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n"
 			+ "Meglio andare al piu' presto in biblioteca a studiare. Ma dov'e'?\n"
 			+ "I locali sono popolati da strani personaggi, "
@@ -26,9 +27,15 @@ public class DiaDia {
 			+ "puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n"
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
+	private Partita partita;
 
 	public DiaDia() {
 		this.partita = new Partita();
+	}
+
+	public static void main(String[] argc) {
+		DiaDia gioco = new DiaDia();
+		gioco.gioca();
 	}
 
 	public void gioca() {
@@ -46,13 +53,13 @@ public class DiaDia {
 
 	/**
 	 * Processa una istruzione
-	 * 
+	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false
 	 *         altrimenti
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		FabbricaDiComandi factory = new FabbricaDiComandiSemplice();
+		FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva();
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.isVinta())
@@ -60,11 +67,6 @@ public class DiaDia {
 		if (this.partita.giocatoreIsVivo())
 			System.out.println("Hai esaurito i CFU...");
 		return this.partita.isFinita();
-	}
-
-	public static void main(String[] argc) {
-		DiaDia gioco = new DiaDia();
-		gioco.gioca();
 	}
 
 }
