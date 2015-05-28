@@ -56,17 +56,16 @@ public class Attrezzo {
 	}
 
     @Override
-    public boolean equals(Object o) { // TODO Autogenerato, controllare
-        if (this == o) return true;
+	public boolean equals(Object o) {
+		if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Attrezzo attrezzo = (Attrezzo) o;
 
         if (peso != attrezzo.peso) return false;
-        if (nome != null ? !nome.equals(attrezzo.nome) : attrezzo.nome != null) return false;
+		return !(nome != null ? !nome.equals(attrezzo.nome) : attrezzo.nome != null);
 
-        return true;
-    }
+	}
 
     @Override
     public int hashCode() { // Autogenerato, sembra buono

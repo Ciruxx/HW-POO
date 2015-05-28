@@ -13,6 +13,4 @@ public abstract class AbstractComando implements Comando {
     public void setParametro(String parametro) {
         this.datoParametro = parametro;
     }
-
-
 }

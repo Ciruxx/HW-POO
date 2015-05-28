@@ -10,7 +10,9 @@ public class ComandoSaluta extends AbstractComando {
     @Override
     public String esegui(Partita partita) {
         AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggio();
-        if (personaggio != null) personaggio.saluta();
+        if (personaggio != null)
+            return personaggio.saluta();
         else return "Non c'è nessun personaggio qui da salutare!";
+
     }
 }

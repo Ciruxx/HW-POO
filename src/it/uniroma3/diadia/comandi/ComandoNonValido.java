@@ -6,7 +6,7 @@ public class ComandoNonValido extends AbstractComando implements Comando {
 
 	@Override
     public String esegui(Partita partita) {
-        System.out.println("Comando sconosciuto");
-	}
+        return "Comando sconosciuto";
+    }
 
 }

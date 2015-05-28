@@ -10,17 +10,15 @@ public class ComandoVai extends AbstractComando {
         Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Stanza prossimaStanza;
 		if (super.datoParametro == null) {
-			System.out.println("Dove vuoi andare? Devi specificare una direzione");
-			return;
+			return "Dove vuoi andare? Devi specificare una direzione";
 		}
 		prossimaStanza = stanzaCorrente.getStanzaAdiacente(super.datoParametro);
 		if (prossimaStanza == null) {
-			System.out.println("Direzione inesistente");
-			return;
+			return "Direzione inesistente";
 		}
 		partita.setStanzaCorrente(prossimaStanza);
 		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu() - 1);
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
-		System.out.println("CFU rimanenti: " + partita.getGiocatore().getCfu());
+		return partita.getStanzaCorrente().getDescrizione() + "\n" + "CFU rimanenti: " + partita.getGiocatore().getCfu();
+
 	}
 }
