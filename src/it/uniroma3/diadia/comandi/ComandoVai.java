@@ -9,11 +9,11 @@ public class ComandoVai extends AbstractComando {
     public String esegui(Partita partita) {
         Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Stanza prossimaStanza;
-		if (super.datoParametro == null) {
-			return "Dove vuoi andare? Devi specificare una direzione";
+        if (getParametro() == null) {
+            return "Dove vuoi andare? Devi specificare una direzione";
 		}
-		prossimaStanza = stanzaCorrente.getStanzaAdiacente(super.datoParametro);
-		if (prossimaStanza == null) {
+        prossimaStanza = stanzaCorrente.getStanzaAdiacente(getParametro());
+        if (prossimaStanza == null) {
 			return "Direzione inesistente";
 		}
 		partita.setStanzaCorrente(prossimaStanza);

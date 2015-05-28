@@ -11,8 +11,8 @@ public class ComandoRegala extends AbstractComando {
     @Override
     public String esegui(Partita partita) {
         Borsa borsa = partita.getGiocatore().getBorsa();
-        if (borsa.hasAttrezzo(super.datoParametro)) {
-            Attrezzo attrezzo = borsa.getAttrezzo(super.datoParametro);
+        if (borsa.hasAttrezzo(getParametro())) {
+            Attrezzo attrezzo = borsa.getAttrezzo(getParametro());
             partita.getStanzaCorrente().getPersonaggio().riceviRegalo(attrezzo, partita);
         }
         return null;

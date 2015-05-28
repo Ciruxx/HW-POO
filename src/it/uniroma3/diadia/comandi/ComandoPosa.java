@@ -13,10 +13,10 @@ public class ComandoPosa extends AbstractComando {
         String s;
         Borsa borsa = partita.getGiocatore().getBorsa();
         Stanza stanzaCorrente = partita.getStanzaCorrente();
-        if (borsa.hasAttrezzo(super.datoParametro)) {
-            Attrezzo attrezzo = borsa.getAttrezzo(super.datoParametro);
+        if (borsa.hasAttrezzo(getParametro())) {
+            Attrezzo attrezzo = borsa.getAttrezzo(getParametro());
             if (stanzaCorrente.addAttrezzo(attrezzo)) {
-                borsa.removeAttrezzo(super.datoParametro);
+                borsa.removeAttrezzo(getParametro());
                 s = "Hai posato " + attrezzo.toString();
             } else {
                 s = "La stanza è piena!";
