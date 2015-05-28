@@ -41,9 +41,13 @@ public class CaricatoreLabirinto {
     private Stanza stanzaVincente;
 
 
-    public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
+    public CaricatoreLabirinto(Reader reader) {
         this.nome2stanza = new HashMap<>();
-        this.reader = new LineNumberReader(new FileReader("livelli" + File.separator + nomeFile));
+        this.reader = new LineNumberReader(reader);
+    }
+
+    public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
+        this(new FileReader("livelli" + File.separator + nomeFile));
     }
 
     public void carica() throws FormatoFileNonValidoException {
