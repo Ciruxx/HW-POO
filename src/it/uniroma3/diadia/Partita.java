@@ -1,5 +1,7 @@
 package it.uniroma3.diadia;
 
+import it.uniroma3.diadia.InterfacciaUtente.InterfacciaUtente;
+import it.uniroma3.diadia.InterfacciaUtente.InterfacciaUtenteConsole;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
@@ -19,6 +21,8 @@ public class Partita {
 	private boolean finita;
 	private Giocatore giocatore;
 
+    private InterfacciaUtente interfacciaUtente = new InterfacciaUtenteConsole();
+
 	public Partita() {
 		this.finita = false;
 		labirinto = new Labirinto();
@@ -26,18 +30,18 @@ public class Partita {
 		stanzaCorrente = labirinto.getStanzaIniziale();
 	}
 
+    public Stanza getStanzaCorrente() {
+        return this.stanzaCorrente;
+    }
+
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
 	}
 
-	public Stanza getStanzaCorrente() {
-		return this.stanzaCorrente;
-	}
-
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
-	 * 
-	 * @return vero se partita vinta
+     *
+     * @return vero se partita vinta
 	 */
 	public boolean isVinta() {
 		return this.getStanzaCorrente() == labirinto.getStanzaVincente();
@@ -45,8 +49,8 @@ public class Partita {
 
 	/**
 	 * Restituisce vero se e solo se la partita e' finita
-	 * 
-	 * @return vero se partita finita
+     *
+     * @return vero se partita finita
 	 */
 	public boolean isFinita() {
 		return finita || isVinta() || giocatoreIsVivo();
@@ -54,8 +58,8 @@ public class Partita {
 
 	/**
 	 * Imposta la partita come finita
-	 * 
-	 */
+     *
+     */
 	public void setFinita() {
 		this.finita = true;
 	}
@@ -71,4 +75,8 @@ public class Partita {
 	public boolean giocatoreIsVivo() {
 		 return giocatore.isVivo();
 	}
+
+    public InterfacciaUtente getInterfacciaUtente() {
+        return interfacciaUtente;
+    }
 }
