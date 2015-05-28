@@ -55,8 +55,9 @@ public class DiaDia {
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiRiflessiva();
 		comandoDaEseguire = factory.costruisciComando(istruzione);
-		comandoDaEseguire.esegui(this.partita);
-		if (this.partita.isVinta())
+        String messaggio = comandoDaEseguire.esegui(this.partita);
+        interfacciaUtente.mostraMessaggio(messaggio);
+        if (this.partita.isVinta())
             interfacciaUtente.mostraMessaggio("Hai vinto!");
         if (this.partita.giocatoreIsVivo())
             interfacciaUtente.mostraMessaggio("Hai esaurito i CFU...");
