@@ -23,6 +23,10 @@ public class CaricatoreLabirinto {
     /* prefisso della riga contenente le specifiche dei collegamenti tra stanza nel formato <nomeStanzaDa> <direzione> <nomeStanzaA> */
     private static final String USCITE_MARKER = "Uscite:";
 
+    /* prefisso della riga contenente l'informazione che avvisa il gioco se quello è l'ultimo livello o no*/
+    private static final String FINE_MARKER = "UltimoLivello: ";
+
+
     /*
      *  Esempio di un possibile file di specifica di un labirinto (vedi POO-26-eccezioni-file.pdf)
 
@@ -39,9 +43,16 @@ public class CaricatoreLabirinto {
 
     private Stanza stanzaIniziale;
     private Stanza stanzaVincente;
+    private boolean ultimolivello;
 
 
+    public CaricatoreLabirinto(int i) throws FileNotFoundException {
+        this(new FileReader("livelli" + File.separator + "Livello" + i));
+        this.ultimolivello = false;
+        this.nome2stanza = new HashMap<>();
+    }
     public CaricatoreLabirinto(Reader reader) {
+        this.ultimolivello = false;
         this.nome2stanza = new HashMap<>();
         this.reader = new LineNumberReader(reader);
     }
@@ -56,6 +67,7 @@ public class CaricatoreLabirinto {
             this.leggiInizialeEvincente();
             this.leggiECollocaAttrezzi();
             this.leggiEImpostaUscite();
+            this.setUltimoLivello();
         } finally {
             try {
                 reader.close();
@@ -197,6 +209,15 @@ public class CaricatoreLabirinto {
             default:
                 return null;
         }
+    }
+
+    public void setUltimoLivello() throws FormatoFileNonValidoException {
+        String riga = this.leggiRigaCheCominciaPer(FINE_MARKER);
+        this.ultimolivello = Boolean.parseBoolean(riga);
+    }
+
+    public boolean getUltimoLivello() {
+        return this.ultimolivello;
     }
 
     public Stanza getStanzaIniziale() {

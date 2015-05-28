@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
 
 public class ComandoVaiTest {
 
@@ -16,7 +16,7 @@ public class ComandoVaiTest {
 
     @Before
     public void setUp() {
-        partita = new Partita();
+        partita = new Partita(1);
     }
 
     @Test

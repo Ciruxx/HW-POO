@@ -14,61 +14,62 @@ import it.uniroma3.diadia.giocatore.Giocatore;
  */
 
 public class Partita {
-	private Labirinto labirinto;
-	private Stanza stanzaCorrente;
-	private boolean finita;
-	private Giocatore giocatore;
+    private Labirinto labirinto;
+    private Stanza stanzaCorrente;
+    private boolean finita;
+    private Giocatore giocatore;
 
-	public Partita() {
-		this.finita = false;
-		labirinto = new Labirinto();
-		giocatore = new Giocatore();
-		stanzaCorrente = labirinto.getStanzaIniziale();
-	}
+    public Partita(int indicatoreDiLivello) {
+        this.finita = false;
+        labirinto = new Labirinto(indicatoreDiLivello);
+        giocatore = new Giocatore();
+        stanzaCorrente = labirinto.getStanzaIniziale();
+    }
 
     public Stanza getStanzaCorrente() {
         return this.stanzaCorrente;
     }
 
-	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
-	}
+    public void setStanzaCorrente(Stanza stanzaCorrente) {
+        this.stanzaCorrente = stanzaCorrente;
+    }
 
-	/**
-	 * Restituisce vero se e solo se la partita e' stata vinta
+    /**
+     * Restituisce vero se e solo se la partita e' stata vinta
      *
      * @return vero se partita vinta
-	 */
-	public boolean isVinta() {
-		return this.getStanzaCorrente() == labirinto.getStanzaVincente();
-	}
+     */
+    public boolean isVinta() {
+        return this.getStanzaCorrente() == labirinto.getStanzaVincente();
+    }
 
-	/**
-	 * Restituisce vero se e solo se la partita e' finita
+    /**
+     * Restituisce vero se e solo se la partita e' finita
      *
      * @return vero se partita finita
-	 */
-	public boolean isFinita() {
-		return finita || isVinta() || giocatoreIsVivo();
-	}
-
-	/**
-	 * Imposta la partita come finita
-     *
      */
-	public void setFinita() {
-		this.finita = true;
-	}
+    public boolean isFinita() {
+        return (finita || isVinta() || giocatoreIsVivo()) && (getLabirinto().ultimastanza);
+    }
 
-	public Giocatore getGiocatore() {
-		return giocatore;
-	}
+    /**
+     * Imposta la partita come finita
+     */
+    public void setFinita() {
+        this.finita = true;
+    }
 
-	public Labirinto getLabirinto() {
-		return labirinto;
-	}
+    public Giocatore getGiocatore() {
+        return giocatore;
+    }
 
-	public boolean giocatoreIsVivo() {
-		 return giocatore.isVivo();
-	}
+    public Labirinto getLabirinto() {
+        return labirinto;
+    }
+
+    public boolean giocatoreIsVivo() {
+        return giocatore.isVivo();
+    }
+
+
 }

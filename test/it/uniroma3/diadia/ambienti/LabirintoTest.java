@@ -12,7 +12,7 @@ public class LabirintoTest {
 
 	@Before
     public void setUp() {
-        labirinto = new Labirinto();
+		labirinto = new Labirinto(1);
 	}
 
 	@Test

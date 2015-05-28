@@ -27,10 +27,11 @@ public class DiaDia {
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
 	private Partita partita;
     private InterfacciaUtente interfacciaUtente = new InterfacciaUtenteConsole();
+    private int indicatoreDiLivello = 1;
 
     public DiaDia() {
-        this.partita = new Partita();
-	}
+        this.partita = new Partita(indicatoreDiLivello);
+    }
 
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();
@@ -57,11 +58,15 @@ public class DiaDia {
 		comandoDaEseguire = factory.costruisciComando(istruzione);
         String messaggio = comandoDaEseguire.esegui(this.partita);
         interfacciaUtente.mostraMessaggio(messaggio);
-        if (this.partita.isVinta())
-            interfacciaUtente.mostraMessaggio("Hai vinto!");
+        if (this.partita.isVinta() && !this.partita.isFinita()) {
+            this.indicatoreDiLivello += 1;
+            interfacciaUtente.mostraMessaggio("Hai vinto!\n");
+            interfacciaUtente.mostraMessaggio("Livello " + indicatoreDiLivello);
+            this.partita = new Partita(indicatoreDiLivello);
+        }
         if (this.partita.giocatoreIsVivo())
             interfacciaUtente.mostraMessaggio("Hai esaurito i CFU...");
         return this.partita.isFinita();
-	}
+    }
 
 }
