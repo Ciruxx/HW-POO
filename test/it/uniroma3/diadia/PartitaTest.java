@@ -16,9 +16,9 @@ public class PartitaTest {
 
 	@Before
     public void setUp() {
-        partitaAppenaIniziata = new Partita();
-		partitaVinta = new Partita();
-		partitaZeroCfu = new Partita();
+		partitaAppenaIniziata = new Partita(1);
+		partitaVinta = new Partita(1);
+		partitaZeroCfu = new Partita(1);
 
 		partitaZeroCfu.getGiocatore().setCfu(0);
 

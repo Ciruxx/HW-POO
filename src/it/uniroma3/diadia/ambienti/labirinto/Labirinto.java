@@ -13,15 +13,17 @@ import java.io.FileNotFoundException;
 
 
 public class Labirinto {
+	public boolean ultimastanza;
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
 
-	public Labirinto() {
+	public Labirinto(int i) {
 		try {
-			CaricatoreLabirinto caricatore = new CaricatoreLabirinto("Livello1");
+			CaricatoreLabirinto caricatore = new CaricatoreLabirinto(i);
 			caricatore.carica();
 			stanzaIniziale = caricatore.getStanzaIniziale();
 			stanzaVincente = caricatore.getStanzaVincente();
+			ultimastanza = caricatore.getUltimoLivello();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (FormatoFileNonValidoException e) {

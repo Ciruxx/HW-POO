@@ -19,7 +19,7 @@ public class ComandoPrendiTest {
 
     @Before
     public void setUp() {
-        partita = new Partita();
+        partita = new Partita(1);
         borsa = partita.getGiocatore().getBorsa();
         stanza = partita.getStanzaCorrente();
     }
