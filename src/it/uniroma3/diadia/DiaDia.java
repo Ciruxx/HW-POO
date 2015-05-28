@@ -41,6 +41,7 @@ public class DiaDia {
 	public void gioca() {
 		String istruzione;
         interfacciaUtente.mostraMessaggio(MESSAGGIO_BENVENUTO);
+        interfacciaUtente.mostraMessaggio("Livello " + indicatoreDiLivello);
         do
             istruzione = interfacciaUtente.prendiIstruzione();
         while (!processaIstruzione(istruzione));
