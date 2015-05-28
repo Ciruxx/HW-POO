@@ -9,16 +9,16 @@ import java.util.*;
 public class CaricatoreLabirinto {
 
     /* prefisso di una singola riga di testo contenente tutti i nomi delle stanze */
-    private static final String STANZE_MARKER = "Stanze:";
+    private static final String STANZE_MARKER = "Stanze: ";
 
     /* prefisso di una singola riga contenente il nome della stanza iniziale */
-    private static final String STANZA_INIZIALE_MARKER = "Inizio:";
+    private static final String STANZA_INIZIALE_MARKER = "Inizio: ";
 
     /* prefisso della riga contenente il nome stanza vincente */
-    private static final String STANZA_VINCENTE_MARKER = "Vincente:";
+    private static final String STANZA_VINCENTE_MARKER = "Vincente: ";
 
     /* prefisso della riga contenente le specifiche degli attrezzi da collocare nel formato <nomeAttrezzo> <peso> <nomeStanza> */
-    private static final String ATTREZZI_MARKER = "Attrezzi:";
+    private static final String ATTREZZI_MARKER = "Attrezzi: ";
 
     /* prefisso della riga contenente le specifiche dei collegamenti tra stanza nel formato <nomeStanzaDa> <direzione> <nomeStanzaA> */
     private static final String USCITE_MARKER = "Uscite:";
@@ -79,6 +79,7 @@ public class CaricatoreLabirinto {
 
     private void leggiECreaStanze() throws FormatoFileNonValidoException {
         String nomiStanze = this.leggiRigaCheCominciaPer(STANZE_MARKER);
+        nomiStanze = nomiStanze.replaceAll(" ", "");
         for (String nomeStanza : separaStringheAlleVirgole(nomiStanze)) {
             Stanza stanza = new Stanza(nomeStanza);
             this.nome2stanza.put(nomeStanza, stanza);
@@ -87,9 +88,9 @@ public class CaricatoreLabirinto {
 
     private List<String> separaStringheAlleVirgole(String string) {
         List<String> result = new LinkedList<>();
-        Scanner scanner = new Scanner(string);
-        scanner.useDelimiter(",");
-        try (Scanner scannerDiParole = scanner) {
+        Scanner scannerDiParole = new Scanner(string);
+        scannerDiParole.useDelimiter(",");
+        while (scannerDiParole.hasNext()) {
             result.add(scannerDiParole.next());
         }
         return result;
