@@ -9,8 +9,8 @@ public class ComandoPosa extends AbstractComando {
 
 
 	@Override
-	public void esegui(Partita partita) {
-		Borsa borsa = partita.getGiocatore().getBorsa();
+    public String esegui(Partita partita) {
+        Borsa borsa = partita.getGiocatore().getBorsa();
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
 		if (borsa.hasAttrezzo(super.datoParametro)) {
 			Attrezzo attrezzo = borsa.getAttrezzo(super.datoParametro);

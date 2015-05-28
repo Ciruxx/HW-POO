@@ -8,8 +8,8 @@ import it.uniroma3.diadia.giocatore.Borsa;
 public class ComandoPrendi extends AbstractComando {
 
 	@Override
-	public void esegui(Partita partita) {
-		Stanza stanzaCorrente = partita.getStanzaCorrente();
+    public String esegui(Partita partita) {
+        Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Borsa borsa = partita.getGiocatore().getBorsa();
 		if (stanzaCorrente.hasAttrezzo(super.datoParametro)) {
 			Attrezzo attrezzo = stanzaCorrente.getAttrezzo(super.datoParametro);

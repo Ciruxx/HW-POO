@@ -5,8 +5,8 @@ import it.uniroma3.diadia.Partita;
 public class ComandoFine extends AbstractComando {
 
 	@Override
-	public void esegui(Partita partita) {
-		System.out.println("Game Over!\nGrazie di aver giocato!");
+    public String esegui(Partita partita) {
+        System.out.println("Game Over!\nGrazie di aver giocato!");
 		partita.setFinita();
 	}
 

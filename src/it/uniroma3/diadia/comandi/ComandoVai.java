@@ -6,8 +6,8 @@ import it.uniroma3.diadia.ambienti.Stanza;
 public class ComandoVai extends AbstractComando {
 
 	@Override
-	public void esegui(Partita partita) {
-		Stanza stanzaCorrente = partita.getStanzaCorrente();
+    public String esegui(Partita partita) {
+        Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Stanza prossimaStanza;
 		if (super.datoParametro == null) {
 			System.out.println("Dove vuoi andare? Devi specificare una direzione");

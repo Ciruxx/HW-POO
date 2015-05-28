@@ -7,7 +7,7 @@ public class ComandoInteragisci extends AbstractComando {
     private static final String MESSAGGIO_NO_PERSONAGGIO = "Non ci sono personaggi in questa stanza";
 
     @Override
-    public void esegui(Partita partita) {
+    public String esegui(Partita partita) {
         AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggio();
         if (personaggio != null) {
             System.out.println(personaggio.agisci(partita));

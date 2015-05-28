@@ -1,7 +1,5 @@
 package it.uniroma3.diadia;
 
-import it.uniroma3.diadia.InterfacciaUtente.InterfacciaUtente;
-import it.uniroma3.diadia.InterfacciaUtente.InterfacciaUtenteConsole;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
@@ -20,8 +18,6 @@ public class Partita {
 	private Stanza stanzaCorrente;
 	private boolean finita;
 	private Giocatore giocatore;
-
-    private InterfacciaUtente interfacciaUtente = new InterfacciaUtenteConsole();
 
 	public Partita() {
 		this.finita = false;
@@ -75,8 +71,4 @@ public class Partita {
 	public boolean giocatoreIsVivo() {
 		 return giocatore.isVivo();
 	}
-
-    public InterfacciaUtente getInterfacciaUtente() {
-        return interfacciaUtente;
-    }
 }

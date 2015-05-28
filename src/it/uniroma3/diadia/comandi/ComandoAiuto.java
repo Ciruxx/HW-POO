@@ -5,12 +5,13 @@ import it.uniroma3.diadia.Partita;
 public class ComandoAiuto extends AbstractComando {
 
     private static String[] elencoComandi = {"vai", "posa", "prendi",
-            "aiuto", "fine", "guarda", "interagisci"}; // TODO è orribile: ridondanza del codice
+            "aiuto", "fine", "guarda", "interagisci"};
 
     @Override
-    public void esegui(Partita partita) {
+    public String esegui(Partita partita) {
+        StringBuilder s = new StringBuilder();
         for (String anElencoComandi : elencoComandi)
-            System.out.print(anElencoComandi + " ");
-        System.out.println();
+            s.append(anElencoComandi).append(" ");
+        return s.toString();
     }
 }

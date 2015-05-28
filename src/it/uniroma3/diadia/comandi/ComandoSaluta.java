@@ -8,9 +8,9 @@ import it.uniroma3.diadia.Personaggi.AbstractPersonaggio;
  */
 public class ComandoSaluta extends AbstractComando {
     @Override
-    public void esegui(Partita partita) {
+    public String esegui(Partita partita) {
         AbstractPersonaggio personaggio = partita.getStanzaCorrente().getPersonaggio();
         if (personaggio != null) personaggio.saluta();
-        else partita.getInterfacciaUtente().mostraMessaggio("Non c'è nessun personaggio qui da salutare!");
+        else return "Non c'è nessun personaggio qui da salutare!";
     }
 }

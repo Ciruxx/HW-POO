@@ -8,16 +8,12 @@ import it.uniroma3.diadia.giocatore.Borsa;
  */
 public class ComandoRegala extends AbstractComando {
     @Override
-    public void esegui(Partita partita) {
+    public String esegui(Partita partita) {
         Borsa borsa = partita.getGiocatore().getBorsa();
         if (borsa.hasAttrezzo(super.datoParametro)) {
             Attrezzo attrezzo = borsa.getAttrezzo(super.datoParametro);
-            riceviRegalo(attrezzo, partita);
+            partita.getStanzaCorrente().getPersonaggio().riceviRegalo(attrezzo, partita);
         }
-    }
-
-    @Override
-    public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
         return null;
     }
 }

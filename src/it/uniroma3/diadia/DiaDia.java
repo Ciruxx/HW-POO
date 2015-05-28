@@ -1,12 +1,10 @@
 package it.uniroma3.diadia;
 
+import it.uniroma3.diadia.InterfacciaUtente.InterfacciaUtente;
+import it.uniroma3.diadia.InterfacciaUtente.InterfacciaUtenteConsole;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
-
-import java.util.Scanner;
-
-//aiutoimport it.uniroma3.diadia.comandi.FabbricaDiComandiSemplice;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -28,9 +26,10 @@ public class DiaDia {
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
 	private Partita partita;
+    private InterfacciaUtente interfacciaUtente = new InterfacciaUtenteConsole();
 
-	public DiaDia() {
-		this.partita = new Partita();
+    public DiaDia() {
+        this.partita = new Partita();
 	}
 
 	public static void main(String[] argc) {
@@ -40,16 +39,11 @@ public class DiaDia {
 
 	public void gioca() {
 		String istruzione;
-		Scanner scannerDiLinee;
-
-		System.out.println(MESSAGGIO_BENVENUTO);
-		scannerDiLinee = new Scanner(System.in);
-		do
-			istruzione = scannerDiLinee.nextLine();
-		while (!processaIstruzione(istruzione));
-
-		scannerDiLinee.close();
-	}
+        interfacciaUtente.mostraMessaggio(MESSAGGIO_BENVENUTO);
+        do
+            istruzione = interfacciaUtente.prendiIstruzione();
+        while (!processaIstruzione(istruzione));
+    }
 
 	/**
 	 * Processa una istruzione
@@ -63,10 +57,10 @@ public class DiaDia {
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.isVinta())
-			System.out.println("Hai vinto!");
-		if (this.partita.giocatoreIsVivo())
-			System.out.println("Hai esaurito i CFU...");
-		return this.partita.isFinita();
+            interfacciaUtente.mostraMessaggio("Hai vinto!");
+        if (this.partita.giocatoreIsVivo())
+            interfacciaUtente.mostraMessaggio("Hai esaurito i CFU...");
+        return this.partita.isFinita();
 	}
 
 }
