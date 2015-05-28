@@ -18,7 +18,7 @@ public class FabbricaDiComandiRiflessiva implements FabbricaDiComandi {
         try {
             String nomeClasse = "it.uniroma3.diadia.comandi.Comando";
             nomeClasse += Character.toUpperCase(nomeComando.charAt(0));
-            nomeClasse += nomeComando.substring(1);
+            nomeClasse += nomeComando.substring(1).toLowerCase(); //Su Windows se si scrive in maiuscolo il comando da errore quindi abbiamo aggiunto il .toLowerCase
             comando = (Comando) Class.forName(nomeClasse).newInstance();
             comando.setParametro(parametro);
         } catch (Exception e) {
