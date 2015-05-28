@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.ambienti;
 
+import it.uniroma3.diadia.io.InterfacciaUtenteConsole;
+
 public class StanzaBloccata extends Stanza {
     private String direzioneBloccata;
     private String attrezzo;
@@ -19,9 +21,8 @@ public class StanzaBloccata extends Stanza {
 
     @Override
     public Stanza getStanzaAdiacente(String direzione) {
-        if (direzione.equals(direzioneBloccata) && !hasAttrezzo(attrezzo))
-        {
-            System.out.println("Non hai " + attrezzo + ", non puoi andare in questa direzione!");
+        if (direzione.equals(direzioneBloccata) && !hasAttrezzo(attrezzo)) {
+            InterfacciaUtenteConsole.getInstance().mostraMessaggio("Non hai " + attrezzo + ", non puoi andare in questa direzione!");
             return this;
         }
         return super.getStanzaAdiacente(direzione);

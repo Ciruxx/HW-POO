@@ -4,10 +4,7 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
-/**
- * Created by Ciro on 26/05/2015.
- */
-public class ComandoRegala extends AbstractComando {
+public class ComandoRegala extends AbstractComando { // TODO da finire
     @Override
     public String esegui(Partita partita) {
         Borsa borsa = partita.getGiocatore().getBorsa();

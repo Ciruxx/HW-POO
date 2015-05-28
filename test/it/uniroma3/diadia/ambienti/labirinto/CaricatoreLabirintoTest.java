@@ -26,7 +26,8 @@ public class CaricatoreLabirintoTest {
                         "Inizio: biblioteca\n" +
                         "Vincente: biblioteca\n" +
                         "Attrezzi: martello 10 biblioteca\n" +
-                        "Uscite: ");
+                        "Uscite: \n" +
+                        "UltimoLivello: false");
         CaricatoreLabirinto monolocale = new CaricatoreLabirinto(stringReader);
         monolocale.carica();
         assertEquals("biblioteca", monolocale.getStanzaIniziale().getNome());
@@ -38,7 +39,8 @@ public class CaricatoreLabirintoTest {
                 "Inizio: N10\n" +
                 "Vincente: biblioteca\n" +
                 "Attrezzi: martello 10 biblioteca, pinza 2 N10\n" +
-                "Uscite: biblioteca nord N10, biblioteca sud N10");
+                "Uscite: biblioteca nord N10, biblioteca sud N10\n" +
+                "UltimoLivello: false");
         CaricatoreLabirinto monolocale = new CaricatoreLabirinto(stringReader);
         monolocale.carica();
         assertEquals("N10", monolocale.getStanzaIniziale().getNome());

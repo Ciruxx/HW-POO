@@ -26,7 +26,7 @@ public class DiaDia {
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
 	private Partita partita;
-    private InterfacciaUtente interfacciaUtente = new InterfacciaUtenteConsole();
+    private InterfacciaUtente interfacciaUtente = InterfacciaUtenteConsole.getInstance();
     private int indicatoreDiLivello = 1;
 
     public DiaDia() {

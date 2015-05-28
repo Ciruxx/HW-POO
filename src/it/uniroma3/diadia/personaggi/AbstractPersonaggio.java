@@ -24,11 +24,11 @@ public abstract class AbstractPersonaggio {
 
     public String saluta() {
         StringBuilder risposta = new StringBuilder("Ciao, io sono ");
-        risposta.append(this.getNome() + ".");
+        risposta.append(this.getNome()).append(".");
         if (!haSalutato) {
             risposta.append(this.presentazione);
         } else {
-            risposta.append("Ci siamo gia' presentati!");
+            risposta.append("Ci siamo già presentati!");
         }
         this.haSalutato = true;
         return risposta.toString();

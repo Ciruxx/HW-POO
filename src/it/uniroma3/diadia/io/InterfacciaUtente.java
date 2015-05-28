@@ -1,7 +1,7 @@
 package it.uniroma3.diadia.io;
 
 public interface InterfacciaUtente {
-    void mostraMessaggio(String messaggio);
+    public void mostraMessaggio(String messaggio);
 
-    String prendiIstruzione();
+    public String prendiIstruzione();
 }
