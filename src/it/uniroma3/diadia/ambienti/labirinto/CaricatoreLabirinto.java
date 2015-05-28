@@ -158,6 +158,7 @@ public class CaricatoreLabirinto {
                     String stanzaDestinazione = scannerDiLinea.next();
 
                     impostaUscita(stanzaPartenza, dir, stanzaDestinazione);
+                    impostaUscita(stanzaDestinazione, getDirezioneOpposta(dir), stanzaPartenza);
                 }
             }
         }
@@ -181,6 +182,21 @@ public class CaricatoreLabirinto {
     private void check(boolean condizioneCheDeveEsseraVera, String messaggioErrore) throws FormatoFileNonValidoException {
         if (!condizioneCheDeveEsseraVera)
             throw new FormatoFileNonValidoException("Formato file non valido [" + this.reader.getLineNumber() + "] " + messaggioErrore);
+    }
+
+    private String getDirezioneOpposta(String direzione) {
+        switch (direzione) {
+            case "nord":
+                return "sud";
+            case "sud":
+                return "nord";
+            case "est":
+                return "ovest";
+            case "ovest":
+                return "est";
+            default:
+                return null;
+        }
     }
 
     public Stanza getStanzaIniziale() {
