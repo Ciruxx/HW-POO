@@ -4,7 +4,7 @@ import it.uniroma3.diadia.Partita;
 
 public class ComandoNonValido extends AbstractComando implements Comando {
 
-	@Override
+    @Override
     public String esegui(Partita partita) {
         return "Comando sconosciuto";
     }

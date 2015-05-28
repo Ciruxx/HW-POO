@@ -6,8 +6,8 @@ public class ComandoFine extends AbstractComando {
 
 	@Override
     public String esegui(Partita partita) {
-        System.out.println("Game Over!\nGrazie di aver giocato!");
 		partita.setFinita();
-	}
+        return "Game Over!\nGrazie di aver giocato!";
+    }
 
 }
