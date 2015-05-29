@@ -39,7 +39,7 @@ public class Partita {
      *
      * @return vero se partita vinta
      */
-    public boolean isVinta() {
+    public boolean isVintaPartita() {
         return this.getStanzaCorrente() == labirinto.getStanzaVincente();
     }
 
@@ -49,7 +49,7 @@ public class Partita {
      * @return vero se partita finita
      */
     public boolean isFinita() {
-        return (finita || isVinta() || giocatoreIsVivo()) && (getLabirinto().ultimastanza);
+        return (finita || isVintaPartita() || giocatoreIsVivo()) && (getLabirinto().ultimastanza);
     }
 
     /**
@@ -70,6 +70,5 @@ public class Partita {
     public boolean giocatoreIsVivo() {
         return giocatore.isVivo();
     }
-
 
 }

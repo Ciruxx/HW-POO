@@ -28,17 +28,17 @@ public class PartitaTest {
 
 	@Test
 	public void testIsVinta_AppenaIniziata() {
-		assertFalse(partitaAppenaIniziata.isVinta());
+		assertFalse(partitaAppenaIniziata.isVintaPartita());
 	}
 
 	@Test
 	public void testIsVinta_Giusto() {
-		assertTrue(partitaVinta.isVinta());
+		assertTrue(partitaVinta.isVintaPartita());
 	}
 
 	@Test
 	public void testIsVinta_Persa() {
-		assertFalse(partitaZeroCfu.isVinta());
+		assertFalse(partitaZeroCfu.isVintaPartita());
 	}
 
 	@Test

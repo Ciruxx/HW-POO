@@ -1,8 +1,8 @@
 package it.uniroma3.diadia.giocatore;
 
 public class Giocatore {
+	private static int CFU_INIZIALI = 5;
 	private int cfu;
-	private static int CFU_INIZIALI = 20;
 	private Borsa borsa = new Borsa();
 
 	public Giocatore() {
