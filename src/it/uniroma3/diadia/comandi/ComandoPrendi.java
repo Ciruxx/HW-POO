@@ -12,9 +12,9 @@ public class ComandoPrendi extends AbstractComando {
         String s;
         Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Borsa borsa = partita.getGiocatore().getBorsa();
-		if (stanzaCorrente.hasAttrezzo(super.datoParametro)) {
-			Attrezzo attrezzo = stanzaCorrente.getAttrezzo(super.datoParametro);
-			if (borsa.addAttrezzo(attrezzo)) {
+        if (stanzaCorrente.hasAttrezzo(getParametro())) {
+            Attrezzo attrezzo = stanzaCorrente.getAttrezzo(getParametro());
+            if (borsa.addAttrezzo(attrezzo)) {
 				stanzaCorrente.removeAttrezzo(attrezzo);
                 s = "Hai preso " + attrezzo.toString();
             } else {

@@ -54,8 +54,8 @@ public class CaricatoreLabirinto {
     private boolean ultimolivello;
 
 
-    public CaricatoreLabirinto(int i) throws FileNotFoundException {
-        this(new FileReader("livelli" + File.separator + "Livello" + i));
+    public CaricatoreLabirinto(int indicatoreDiLivello) throws FileNotFoundException {
+        this(new FileReader("livelli" + File.separator + "Livello" + indicatoreDiLivello));
         this.ultimolivello = false;
         this.nome2stanza = new HashMap<>();
     }
