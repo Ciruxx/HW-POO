@@ -115,7 +115,6 @@ public class CaricatoreLabirinto {
         for (int i = 0; i < separaStringheAlleVirgole.size(); i++) {
             String specificaStanza = separaStringheAlleVirgole.get(i);
             String nomeStanza;
-            String direzioneBuia;
             String attrezzoLuminoso;
             try (Scanner scannerLinea = new Scanner(specificaStanza)) {
                 check(scannerLinea.hasNext(), msgTerminazionePrecoce("il nome di una stanza."));
