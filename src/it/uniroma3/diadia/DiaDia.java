@@ -58,18 +58,19 @@ public class DiaDia {
         comandoDaEseguire = factory.costruisciComando(istruzione);
         String messaggio = comandoDaEseguire.esegui(this.partita);
         interfacciaUtente.mostraMessaggio(messaggio);
-        if (this.partita.giocatoreIsVivo())
+        if (this.partita.giocatoreIsVivo()) {
             interfacciaUtente.mostraMessaggio("Hai esaurito i CFU...");
-        else if (this.partita.isFinitaPartita())
+            return false;
+        } else if (this.partita.isFinitaPartita()) {
             interfacciaUtente.mostraMessaggio("HAI VINTO IL GIOCO!!!");
-        else if (this.partita.isVintoLivello()) {
+            return false;
+        } else if (this.partita.isVintoLivello()) {
             this.indicatoreDiLivello += 1;
             interfacciaUtente.mostraMessaggio("Hai vinto!\n");
             interfacciaUtente.mostraMessaggio("Livello " + indicatoreDiLivello);
             this.partita = new Partita(indicatoreDiLivello);
         }
-
-        return this.partita.isFinitaPartita();
+        return true;
     }
 
 }
