@@ -28,32 +28,27 @@ public class PartitaTest {
 
 	@Test
 	public void testIsVinta_AppenaIniziata() {
-		assertFalse(partitaAppenaIniziata.isVintaPartita());
-	}
+        assertFalse(partitaAppenaIniziata.isVintoLivello());
+    }
 
 	@Test
 	public void testIsVinta_Giusto() {
-		assertTrue(partitaVinta.isVintaPartita());
-	}
+        assertTrue(partitaVinta.isVintoLivello());
+    }
 
 	@Test
 	public void testIsVinta_Persa() {
-		assertFalse(partitaZeroCfu.isVintaPartita());
-	}
+        assertFalse(partitaZeroCfu.isVintoLivello());
+    }
 
 	@Test
 	public void testIsFinita_NonFinita() {
-		assertFalse(partitaAppenaIniziata.isFinita());
-	}
-
-	@Test
-	public void testIsFinita_Cfu() {
-		assertTrue(partitaZeroCfu.isFinita());
-	}
+        assertFalse(partitaAppenaIniziata.isFinitaPartita());
+    }
 
 	@Test
 	public void testIsFinita_PartitaVinta() {
-		assertTrue(partitaVinta.isFinita());
-	}
+        assertTrue(partitaVinta.isFinitaPartita());
+    }
 
 }

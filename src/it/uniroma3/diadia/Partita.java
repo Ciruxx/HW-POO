@@ -16,11 +16,11 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 public class Partita {
     private Labirinto labirinto;
     private Stanza stanzaCorrente;
-    private boolean finita;
+    private boolean finitaPartita;
     private Giocatore giocatore;
 
     public Partita(int indicatoreDiLivello) {
-        this.finita = false;
+        this.finitaPartita = false;
         labirinto = new Labirinto(indicatoreDiLivello);
         giocatore = new Giocatore();
         stanzaCorrente = labirinto.getStanzaIniziale();
@@ -39,7 +39,7 @@ public class Partita {
      *
      * @return vero se partita vinta
      */
-    public boolean isVintaPartita() {
+    public boolean isVintoLivello() {
         return this.getStanzaCorrente() == labirinto.getStanzaVincente();
     }
 
@@ -48,15 +48,15 @@ public class Partita {
      *
      * @return vero se partita finita
      */
-    public boolean isFinita() {
-        return (finita || isVintaPartita() || giocatoreIsVivo()) && (getLabirinto().ultimastanza);
+    public boolean isFinitaPartita() {
+        return (finitaPartita || isVintoLivello() || giocatoreIsVivo()) && (getLabirinto().ultimastanza);
     }
 
     /**
      * Imposta la partita come finita
      */
-    public void setFinita() {
-        this.finita = true;
+    public void setFinitaPartita() {
+        this.finitaPartita = true;
     }
 
     public Giocatore getGiocatore() {

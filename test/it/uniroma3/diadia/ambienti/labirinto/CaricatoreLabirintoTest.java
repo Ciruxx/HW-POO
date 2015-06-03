@@ -12,6 +12,8 @@ public class CaricatoreLabirintoTest {
     public void testCarica_Monolocale() throws Exception {
         StringReader stringReader = new StringReader(
                 "Stanze: biblioteca\n" +
+                        "Bloccate:\n" +
+                        "Buie:\n" +
                         "Inizio: biblioteca\n" +
                         "Vincente: biblioteca\n" +
                         "Attrezzi: martello 10 biblioteca\n" +
@@ -25,6 +27,8 @@ public class CaricatoreLabirintoTest {
     @Test
     public void testCarica_Bilocale() throws Exception {
         StringReader stringReader = new StringReader("Stanze: biblioteca, N10\n" +
+                "Bloccate:\n" +
+                "Buie:\n" +
                 "Inizio: N10\n" +
                 "Vincente: biblioteca\n" +
                 "Attrezzi: martello 10 biblioteca, pinza 2 N10\n" +

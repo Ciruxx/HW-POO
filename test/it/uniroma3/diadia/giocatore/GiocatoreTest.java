@@ -11,7 +11,7 @@ public class GiocatoreTest {
 	public void testDecrementaCfu() {
 		Giocatore giocatore = new Giocatore();
 		giocatore.decrementaCfu();
-		assertEquals(9, giocatore.getCfu());
-	}
+        assertEquals(7, giocatore.getCfu());
+    }
 
 }

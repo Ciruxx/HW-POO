@@ -60,16 +60,16 @@ public class DiaDia {
         interfacciaUtente.mostraMessaggio(messaggio);
         if (this.partita.giocatoreIsVivo())
             interfacciaUtente.mostraMessaggio("Hai esaurito i CFU...");
-        else if (this.partita.isFinita())
+        else if (this.partita.isFinitaPartita())
             interfacciaUtente.mostraMessaggio("HAI VINTO IL GIOCO!!!");
-        else if (this.partita.isVintaPartita()) {
+        else if (this.partita.isVintoLivello()) {
             this.indicatoreDiLivello += 1;
             interfacciaUtente.mostraMessaggio("Hai vinto!\n");
             interfacciaUtente.mostraMessaggio("Livello " + indicatoreDiLivello);
             this.partita = new Partita(indicatoreDiLivello);
         }
 
-        return this.partita.isFinita();
+        return this.partita.isFinitaPartita();
     }
 
 }
