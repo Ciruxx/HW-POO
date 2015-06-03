@@ -10,16 +10,16 @@ public class Labirinto {
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
 
-	public Labirinto(int i) {
-		try {
-			CaricatoreLabirinto caricatore = new CaricatoreLabirinto(i);
-			caricatore.carica();
-			stanzaIniziale = caricatore.getStanzaIniziale();
-			stanzaVincente = caricatore.getStanzaVincente();
-			ultimastanza = caricatore.getUltimoLivello();
+	public Labirinto(int indicatoreDiLivello) {
+        try {
+            CaricatoreLabirinto caricatore = new CaricatoreLabirinto(indicatoreDiLivello);
+            caricatore.carica();
+            stanzaIniziale = caricatore.getStanzaIniziale();
+            stanzaVincente = caricatore.getStanzaVincente();
+            ultimastanza = caricatore.getUltimoLivello();
         } catch (FileNotFoundException | FormatoFileNonValidoException e) {
             e.printStackTrace();
-		}
+        }
     }
 
 

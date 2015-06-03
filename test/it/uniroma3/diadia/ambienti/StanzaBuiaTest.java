@@ -14,7 +14,7 @@ public class StanzaBuiaTest {
 
     @Before
     public void setUp() {
-        stanzaBuia = new StanzaBuia("stanza","est", NOME_ATTREZZO_LUMINOSO);
+        stanzaBuia = new StanzaBuia("stanza", NOME_ATTREZZO_LUMINOSO);
     }
 
     @Test

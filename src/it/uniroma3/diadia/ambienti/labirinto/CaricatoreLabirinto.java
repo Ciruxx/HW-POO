@@ -1,6 +1,8 @@
 package it.uniroma3.diadia.ambienti.labirinto;
 
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.ambienti.StanzaBloccata;
+import it.uniroma3.diadia.ambienti.StanzaBuia;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 import java.io.*;
@@ -9,22 +11,28 @@ import java.util.*;
 public class CaricatoreLabirinto {
 
     /* prefisso di una singola riga di testo contenente tutti i nomi delle stanze */
-    private static final String STANZE_MARKER = "Stanze: ";
+    private static final String STANZE_MARKER = "Stanze:";
+
+    /* prefisso di una singola riga di testo contenente tutti i nomi delle stanze buie */
+    private static final String STANZEBUIE_MARKER = "Buie:";
+
+    /* prefisso di una singola riga di testo contenente tutti i nomi delle stanze bloccate */
+    private static final String STANZEBLOCCATE_MARKER = "Bloccate:";
 
     /* prefisso di una singola riga contenente il nome della stanza iniziale */
-    private static final String STANZA_INIZIALE_MARKER = "Inizio: ";
+    private static final String STANZA_INIZIALE_MARKER = "Inizio:";
 
     /* prefisso della riga contenente il nome stanza vincente */
-    private static final String STANZA_VINCENTE_MARKER = "Vincente: ";
+    private static final String STANZA_VINCENTE_MARKER = "Vincente:";
 
     /* prefisso della riga contenente le specifiche degli attrezzi da collocare nel formato <nomeAttrezzo> <peso> <nomeStanza> */
-    private static final String ATTREZZI_MARKER = "Attrezzi: ";
+    private static final String ATTREZZI_MARKER = "Attrezzi:";
 
     /* prefisso della riga contenente le specifiche dei collegamenti tra stanza nel formato <nomeStanzaDa> <direzione> <nomeStanzaA> */
     private static final String USCITE_MARKER = "Uscite:";
 
     /* prefisso della riga contenente l'informazione che avvisa il gioco se quello è l'ultimo livello o no*/
-    private static final String FINE_MARKER = "UltimoLivello: ";
+    private static final String FINE_MARKER = "UltimoLivello:";
 
 
     /*
@@ -46,11 +54,12 @@ public class CaricatoreLabirinto {
     private boolean ultimolivello;
 
 
-    public CaricatoreLabirinto(int i) throws FileNotFoundException {
-        this(new FileReader("livelli" + File.separator + "Livello" + i));
+    public CaricatoreLabirinto(int indicatoreDiLivello) throws FileNotFoundException {
+        this(new FileReader("livelli" + File.separator + "Livello" + indicatoreDiLivello));
         this.ultimolivello = false;
         this.nome2stanza = new HashMap<>();
     }
+
     public CaricatoreLabirinto(Reader reader) {
         this.ultimolivello = false;
         this.nome2stanza = new HashMap<>();
@@ -64,6 +73,8 @@ public class CaricatoreLabirinto {
     public void carica() throws FormatoFileNonValidoException {
         try {
             this.leggiECreaStanze();
+            this.leggiECreaStanzeBloccate();
+            this.leggiECreaStanzeBuie();
             this.leggiInizialeEvincente();
             this.leggiECollocaAttrezzi();
             this.leggiEImpostaUscite();
@@ -83,7 +94,7 @@ public class CaricatoreLabirinto {
         try {
             String riga = this.reader.readLine();
             check(riga.startsWith(marker), "era attesa una riga che cominciasse per " + marker);
-            return riga.substring(marker.length());
+            return riga.substring(marker.length()).trim();
         } catch (IOException e) {
             throw new FormatoFileNonValidoException(e.getMessage());
         }
@@ -98,12 +109,51 @@ public class CaricatoreLabirinto {
         }
     }
 
+    private void leggiECreaStanzeBuie() throws FormatoFileNonValidoException {
+        String nomiStanzeBuie = this.leggiRigaCheCominciaPer(STANZEBUIE_MARKER);
+        List<String> separaStringheAlleVirgole = separaStringheAlleVirgole(nomiStanzeBuie);
+        for (int i = 0; i < separaStringheAlleVirgole.size(); i++) {
+            String specificaStanza = separaStringheAlleVirgole.get(i);
+            String nomeStanza;
+            String attrezzoLuminoso;
+            try (Scanner scannerLinea = new Scanner(specificaStanza)) {
+                check(scannerLinea.hasNext(), msgTerminazionePrecoce("il nome di una stanza."));
+                nomeStanza = scannerLinea.next().trim();
+                check(scannerLinea.hasNext(), msgTerminazionePrecoce("attrezzo che illumina la stanza " + nomeStanza + "."));
+                attrezzoLuminoso = scannerLinea.next().trim();
+            }
+            StanzaBuia stanza = new StanzaBuia(nomeStanza, attrezzoLuminoso);
+            this.nome2stanza.put(nomeStanza, stanza);
+        }
+    }
+
+    private void leggiECreaStanzeBloccate() throws FormatoFileNonValidoException {
+        String nomiStanzeBloccate = this.leggiRigaCheCominciaPer(STANZEBLOCCATE_MARKER);
+        List<String> separaStringheAlleVirgole = separaStringheAlleVirgole(nomiStanzeBloccate);
+        for (String specificaStanza : separaStringheAlleVirgole) {
+            String nomeStanza;
+            String direzioneBloccata;
+            String attrezzoCheSblocca;
+            try (Scanner scannerLinea = new Scanner(specificaStanza)) {
+                check(scannerLinea.hasNext(), msgTerminazionePrecoce("il nome della stanza."));
+                nomeStanza = scannerLinea.next().trim();
+                check(scannerLinea.hasNext(), msgTerminazionePrecoce("la direzione bloccata della stanza " + nomeStanza + "."));
+                direzioneBloccata = scannerLinea.next().trim();
+                check(scannerLinea.hasNext(), msgTerminazionePrecoce("l'attrezzo che sblocca " + nomeStanza + "."));
+                attrezzoCheSblocca = scannerLinea.next().trim();
+            }
+            StanzaBloccata stanza = new StanzaBloccata(nomeStanza, direzioneBloccata, attrezzoCheSblocca);
+            this.nome2stanza.put(nomeStanza, stanza);
+
+        }
+    }
+
     private List<String> separaStringheAlleVirgole(String string) {
         List<String> result = new LinkedList<>();
         Scanner scannerDiParole = new Scanner(string);
         scannerDiParole.useDelimiter(",");
         while (scannerDiParole.hasNext()) {
-            result.add(scannerDiParole.next());
+            result.add(scannerDiParole.next().trim());
         }
         return result;
     }
@@ -128,11 +178,11 @@ public class CaricatoreLabirinto {
             String nomeStanza;
             try (Scanner scannerLinea = new Scanner(specificaAttrezzo)) {
                 check(scannerLinea.hasNext(), msgTerminazionePrecoce("il nome di un attrezzo."));
-                nomeAttrezzo = scannerLinea.next();
+                nomeAttrezzo = scannerLinea.next().trim();
                 check(scannerLinea.hasNext(), msgTerminazionePrecoce("il peso dell'attrezzo " + nomeAttrezzo + "."));
-                pesoAttrezzo = scannerLinea.next();
+                pesoAttrezzo = scannerLinea.next().trim();
                 check(scannerLinea.hasNext(), msgTerminazionePrecoce("il nome della stanza in cui collocare l'attrezzo " + nomeAttrezzo + "."));
-                nomeStanza = scannerLinea.next();
+                nomeStanza = scannerLinea.next().trim();
             }
             posaAttrezzo(nomeAttrezzo, pesoAttrezzo, nomeStanza);
         }
@@ -163,11 +213,11 @@ public class CaricatoreLabirinto {
             try (Scanner scannerDiLinea = new Scanner(specificheUscite)) {
                 while (scannerDiLinea.hasNext()) {
                     check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("le uscite di una stanza."));
-                    String stanzaPartenza = scannerDiLinea.next();
+                    String stanzaPartenza = scannerDiLinea.next().trim();
                     check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("la direzione di una uscita della stanza " + stanzaPartenza));
-                    String dir = scannerDiLinea.next();
+                    String dir = scannerDiLinea.next().trim();
                     check(scannerDiLinea.hasNext(), msgTerminazionePrecoce("la destinazione di una uscita della stanza " + stanzaPartenza + " nella direzione " + dir));
-                    String stanzaDestinazione = scannerDiLinea.next();
+                    String stanzaDestinazione = scannerDiLinea.next().trim();
 
                     impostaUscita(stanzaPartenza, dir, stanzaDestinazione);
                     impostaUscita(stanzaDestinazione, getDirezioneOpposta(dir), stanzaPartenza);

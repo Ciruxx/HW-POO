@@ -6,7 +6,7 @@ public class InterfacciaUtenteConsole implements InterfacciaUtente {
 
     private static InterfacciaUtente instance = null;
 
-    private InterfacciaUtenteConsole() {
+    public InterfacciaUtenteConsole() {
     }
 
     public static InterfacciaUtente getInstance() {
