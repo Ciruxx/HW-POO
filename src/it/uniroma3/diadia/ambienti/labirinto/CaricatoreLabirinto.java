@@ -58,7 +58,7 @@ public class CaricatoreLabirinto {
     }
 
     public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
-        this(new FileReader("livelli" + File.separator + nomeFile));
+        this(new FileReader(nomeFile));
     }
 
     public void carica() throws FormatoFileNonValidoException {

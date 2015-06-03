@@ -1,6 +1,5 @@
 package it.uniroma3.diadia.ambienti.labirinto;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.StringReader;
@@ -8,16 +7,6 @@ import java.io.StringReader;
 import static org.junit.Assert.assertEquals;
 
 public class CaricatoreLabirintoTest {
-
-    @Before
-    public void setUp() throws Exception {
-        StringReader stringReader = new StringReader("Stanze: biblioteca, N10, N11\n" +
-                "Inizio: N10\n" +
-                "Vincente: N11\n" +
-                "Attrezzi: martello 10 biblioteca, pinza 2 N10\n" +
-                "Uscite: biblioteca nord N10, biblioteca sud N11");
-        CaricatoreLabirinto labirinto = new CaricatoreLabirinto(stringReader);
-    }
 
     @Test
     public void testCarica_Monolocale() throws Exception {
@@ -39,10 +28,11 @@ public class CaricatoreLabirintoTest {
                 "Inizio: N10\n" +
                 "Vincente: biblioteca\n" +
                 "Attrezzi: martello 10 biblioteca, pinza 2 N10\n" +
-                "Uscite: biblioteca nord N10, biblioteca sud N10\n" +
+                "Uscite: biblioteca sud N10\n" +
                 "UltimoLivello: false");
-        CaricatoreLabirinto monolocale = new CaricatoreLabirinto(stringReader);
-        monolocale.carica();
-        assertEquals("N10", monolocale.getStanzaIniziale().getNome());
+        CaricatoreLabirinto bilocale = new CaricatoreLabirinto(stringReader);
+        bilocale.carica();
+        assertEquals("N10", bilocale.getStanzaIniziale().getNome());
+        assertEquals("biblioteca", bilocale.getStanzaIniziale().getStanzaAdiacente("nord").getNome());
     }
 }
