@@ -26,6 +26,6 @@ public class Giocatore {
 	}
 	
 	public boolean isVivo() {
-		 return getCfu() == 0;
-	}
+        return getCfu() > 0;
+    }
 }

@@ -27,17 +27,17 @@ public class PartitaTest {
 	}
 
 	@Test
-	public void testIsVinta_AppenaIniziata() {
+    public void testIsVintoLivello_AppenaIniziata() {
         assertFalse(partitaAppenaIniziata.isVintoLivello());
     }
 
 	@Test
-	public void testIsVinta_Giusto() {
+    public void testIsVintoLivello_Giusto() {
         assertTrue(partitaVinta.isVintoLivello());
     }
 
 	@Test
-	public void testIsVinta_Persa() {
+    public void testIsVintoLivello_Persa() {
         assertFalse(partitaZeroCfu.isVintoLivello());
     }
 

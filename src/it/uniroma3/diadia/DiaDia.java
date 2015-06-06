@@ -43,7 +43,7 @@ public class DiaDia {
         interfacciaUtente.mostraMessaggio(MESSAGGIO_BENVENUTO);
         do
             istruzione = interfacciaUtente.prendiIstruzione();
-        while (!processaIstruzione(istruzione));
+        while (processaIstruzione(istruzione));
     }
 
     /**
@@ -58,19 +58,17 @@ public class DiaDia {
         comandoDaEseguire = factory.costruisciComando(istruzione);
         String messaggio = comandoDaEseguire.esegui(this.partita);
         interfacciaUtente.mostraMessaggio(messaggio);
-        if (this.partita.giocatoreIsVivo()) {
+        if (!this.partita.giocatoreIsVivo()) {
             interfacciaUtente.mostraMessaggio("Hai esaurito i CFU...");
-            return false;
-        } else if (this.partita.isFinitaPartita()) {
+        } else if (this.partita.isVintaPartita()) {
             interfacciaUtente.mostraMessaggio("HAI VINTO IL GIOCO!!!");
-            return false;
         } else if (this.partita.isVintoLivello()) {
             this.indicatoreDiLivello += 1;
             interfacciaUtente.mostraMessaggio("Hai vinto!\n");
             interfacciaUtente.mostraMessaggio("Livello " + indicatoreDiLivello);
             this.partita = new Partita(indicatoreDiLivello);
         }
-        return true;
+        return !partita.isFinitaPartita();
     }
 
 }

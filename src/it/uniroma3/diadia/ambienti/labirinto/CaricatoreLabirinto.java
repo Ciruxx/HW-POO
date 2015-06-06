@@ -47,22 +47,18 @@ public class CaricatoreLabirinto {
      */
     private LineNumberReader reader;
 
-    private Map<String, Stanza> nome2stanza;
+    private Map<String, Stanza> nome2stanza = new HashMap<>();
 
     private Stanza stanzaIniziale;
     private Stanza stanzaVincente;
-    private boolean ultimolivello;
+    private boolean ultimolivello = false;
 
 
     public CaricatoreLabirinto(int indicatoreDiLivello) throws FileNotFoundException {
         this(new FileReader("livelli" + File.separator + "Livello" + indicatoreDiLivello));
-        this.ultimolivello = false;
-        this.nome2stanza = new HashMap<>();
     }
 
     public CaricatoreLabirinto(Reader reader) {
-        this.ultimolivello = false;
-        this.nome2stanza = new HashMap<>();
         this.reader = new LineNumberReader(reader);
     }
 
@@ -112,8 +108,7 @@ public class CaricatoreLabirinto {
     private void leggiECreaStanzeBuie() throws FormatoFileNonValidoException {
         String nomiStanzeBuie = this.leggiRigaCheCominciaPer(STANZEBUIE_MARKER);
         List<String> separaStringheAlleVirgole = separaStringheAlleVirgole(nomiStanzeBuie);
-        for (int i = 0; i < separaStringheAlleVirgole.size(); i++) {
-            String specificaStanza = separaStringheAlleVirgole.get(i);
+        for (String specificaStanza : separaStringheAlleVirgole) {
             String nomeStanza;
             String attrezzoLuminoso;
             try (Scanner scannerLinea = new Scanner(specificaStanza)) {

@@ -49,7 +49,11 @@ public class Partita {
      * @return vero se partita finita
      */
     public boolean isFinitaPartita() {
-        return (finitaPartita || isVintoLivello() || giocatoreIsVivo()) && (getLabirinto().ultimastanza);
+        return finitaPartita || (!giocatoreIsVivo()) || isVintaPartita();
+    }
+
+    public boolean isVintaPartita() {
+        return getLabirinto().ultimastanza && isVintoLivello() && giocatoreIsVivo();
     }
 
     /**
